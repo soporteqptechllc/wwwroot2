@@ -1,0 +1,159 @@
+{% extends 'partials/base11.html' %}
+{% load static %}
+
+{% block css%}
+{% include 'partials/css.html' %}
+{% endblock %}
+{% block extra_css %}
+{% endblock %}
+{% block contents %}
+<form method="post">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-md-1 col-md-offset-2">
+            <div class="form-group">
+                <label>Series/Lote</label>
+                <input class="form-control" type="text" name="series" id="series" value="{{idlotetxt}}" disabled>                                       
+            </div><!-- end form-group -->
+        </div><!-- end col-md-1 -->
+        <div class="col-md-2 col-md-offset-2">
+            <div class="form-group">
+                <label>Id_Receta</label>
+                <input class="form-control" type="text" name="receta_id" value="{{idsemtxt}}" disabled>                                       
+            </div><!-- end form-group -->
+        </div><!-- end col-md-2 -->
+        <div class="col-md-1 col-md-offset-2">
+            <div class="form-group">
+                <label>Prod_OrderStatus</label>
+                <input class="form-control" type="text" name="status" value="boposPlanned" disabled>                                       
+            </div><!-- end form-group -->
+        </div><!-- end col-md-1 -->
+        <div class="col-md-1 col-md-offset-2">
+            <div class="form-group">
+                <label>Type</label>
+                <input class="form-control" type="text" name="type" value="S" disabled>                                       
+            </div><!-- end form-group -->
+        </div><!-- end col-md-1 -->
+        <div class="col-md-1 col-md-offset-2">
+            <div class="form-group">
+                <label>Total_kg</label>
+                <input class="form-control" type="text" name="plannedqty" value={{totaltxt}} disabled>                                       
+            </div><!-- end form-group -->
+        </div><!-- end col-md-1 -->
+        <div class="col-md-1 col-md-offset-2">
+            <div class="form-group">
+                <label>Warehouse</label>
+                <input class="form-control" type="text" name="warehouse" value=16 disabled>                                       
+            </div><!-- end form-group -->
+        </div><!-- end col-md-1 -->     
+    </div><!-- end row1 -->
+    <div class="row">
+        <div class="col-md-2 col-md-offset-2">
+            <div class="form-group">
+                <label>OrderDate</label>
+                <input class="form-control" type="text" name="postdate" value="{{fechatxt1}}" disabled>                                       
+            </div><!-- end form-group -->
+        </div><!-- end col-md-2 -->
+        <div class="col-md-2 col-md-offset-2">
+            <div class="form-group">
+                <label>StartDate</label>
+                <input class="form-control" type="text" name="startdate" value="{{fechatxt2}}" disabled>                                       
+            </div><!-- end form-group -->
+        </div><!-- end col-md-2 --> 
+        <div class="col-md-2 col-md-offset-2">
+            <div class="form-group">
+                <label>DueDate</label>
+                <input class="form-control" type="text" name="duedate" value="{{fechatxt3}}" disabled>                                       
+            </div><!-- end form-group -->
+        </div><!-- end col-md-2 -->
+        <div class="col-md-2 col-md-offset-2">
+            <div class="form-group">
+                <label>Remarks/Id_fabricacion</label>
+                <input class="form-control" type="text" name="comments" value="{{idfabricaciontxt}}" disabled>                                       
+            </div><!-- end form-group -->
+        </div><!-- end col-md-2 -->                  
+    </div><!-- end row2 -->
+    <br>
+    <div class="row">
+        <div class="col-8">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-editable table-nowrap table-edits table-sm table-bordered table-hover table-striped">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>LineNum</th>
+                                    <th>ItemNo</th>
+                                    <th>PlannedQty</th>
+                                    <th>ProductionOrderIssueType</th>
+                                    <th>Warehouse</th>
+                                    <th>ItemType</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for x,y,z in tabla %}
+    
+                                <tr data-id="tabla">
+                                    <td data-field="linenum" style="width: 80px" align="left">{{x}}</td>
+                                    <td data-field="itemcode" align="left">{{y}}</td>
+                                    <td data-field="plannedqty2" align="left">{{z}}</td>
+                                    <td data-field="issuetype" align="left">im_Manual</td>
+                                    <td data-field="warehouse" align="left">16</td>
+                                    <td data-field="itemtype" align="left">pit_Item</td>                                                                                          
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                            </table>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end col -->
+    </div> <!-- end row -->
+    <div class="col-sm-4">
+        <div class="text-end">
+            <button type="submit" class="btn btn-success mb-3"><i class="mdi mdi-truck-fast me-1"></i>Guardar</button>
+        </div>
+    </div> <!-- end col-sm-4 -->
+    <div class="col-sm-8">
+        <div class="text-end">
+            <button type="button" class="btn btn-warning mb-3" onclick="history.back()"><i class="mdi mdi-truck-fast me-1"></i>Volver atrás</button>
+        </div>
+    </div> <!-- end col-sm-8 --> 
+</form><!-- end form --> 
+               
+{% endblock %}
+{% block r_sidebar %}
+
+{% endblock %}
+{% block footer %}
+{% include 'partials/footer.html' %}
+{% endblock %}
+{% block javascript %}
+        <!-- JAVASCRIPT -->
+        <script src="{% static 'libs/jquery/jquery.min.js' %}"></script>
+        <script src="{% static 'libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'libs/metismenu/metisMenu.min.js' %}"></script>
+        <script src="{% static 'libs/simplebar/simplebar.min.js' %}"></script>
+        <script src="{% static 'libs/node-waves/waves.min.js' %}"></script>
+
+         <!-- Table Editable plugin -->
+         <script src="{% static 'libs/table-edits/build/table-edits.min.js' %}"></script>
+
+        <script src="{% static 'js/pages/table-editable.int.js' %}"></script> 
+
+        <script src="{% static 'js/app.js' %}"></script>
+
+
+        <script src="{% static 'libs/select2/js/select2.min.js' %}"></script>
+        <script src="{% static 'libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js' %}"></script>
+        <script src="{% static 'libs/spectrum-colorpicker2/spectrum.min.js' %}"></script>
+        <script src="{% static 'libs/bootstrap-timepicker/js/bootstrap-timepicker.min.js' %}"></script>
+        <script src="{% static 'libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js' %}"></script>
+        <script src="{% static 'libs/bootstrap-maxlength/bootstrap-maxlength.min.js' %}"></script>
+        <script src="{% static 'libs/@chenfengyuan/datepicker/datepicker.min.js' %}"></script>
+
+        <!-- form advanced init -->
+        <script src="{% static 'js/pages/form-advanced.init.js' %}"></script>
+
+
+{% endblock %}

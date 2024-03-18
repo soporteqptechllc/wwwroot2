@@ -1,0 +1,45 @@
+<div class="topnav">
+    <div class="container-fluid">
+        <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
+            <div class="collapse navbar-collapse" id="topnav-menu-content">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-production" role="button">
+                            <i class="bx bx-collection me-2"></i><span key="t-production">Planta Tocumen</span>
+                            <div class="arrow-down"></div>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="topnav-production">
+                            <a href="{% url 'forms-formtanks1' %}" class="dropdown-item" key="t-tanks">Silos Planta 21</a>
+
+                            <a href="{% url 'SiloJG' 212 0 'hoy' %}" class="dropdown-item" key="t-tanks">Planta 21, Silo 2</a>
+                            <a href="{% url 'SiloJG' 213 0 'hoy' %}" class="dropdown-item" key="t-tanks">Planta 21, Silo 3</a>
+                            <a href="{% url 'SiloJG' 253 0 'hoy' %}" class="dropdown-item" key="t-tanks">Planta 25, Silo 3</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-production" role="button">
+                            <i class="bx bx-collection me-2"></i><span key="t-production">Planta Quebradancha</span>
+                            <div class="arrow-down"></div>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="topnav-production">
+                            <a href="{% url 'SiloJG' 1 0 'hoy' %}" class="dropdown-item" key="t-tanks">Mezclas Listas, Silo 1 (HE)</a>
+                            <a href="{% url 'SiloJG' 2 0 'hoy' %}" class="dropdown-item" key="t-tanks">Mezclas Listas, Silo 2 (Albañileria)</a>
+                        </div>
+                    </li>
+                    <!--JG MODIFICADO MENU FIN-->
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<div class="text-center mt-4">
+    {% csrf_token %}
+    <!--<form action="mezclaslistas"> OJO --WARNING-- ESTE BOTON SIMPRE DE VA HA LLEVAR A LA PANTALLA DE SILO 1 -->
+    <form action="http://5.189.144.250:8000/components/silo/212/0/hoy/"> 
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-primary waves-effect waves-light">Silo 21-2</button>
+        </div>
+    </form>
+</div>

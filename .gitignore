@@ -1,0 +1,3 @@
+# Se indica en este archivo que directorio o archivo no se va ha subir al GitHut como Backup
+# Ejemplo: el archivo que contiene los "secret key"
+argos_ml_project/secret.json

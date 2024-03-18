@@ -1,0 +1,24 @@
+<!--Pantalla de Mensajes General-->
+<div class="row">
+    {%if messages%}
+        {%for m in messages%}
+            {% if m.tags == 'alert-success' %}
+            <div class="alert alert-success">
+            {{m}}            
+            </div>
+            {% elif m.tags == 'alert-warning' %}
+            <div class="alert alert-warning">
+            {{m}}
+            </div>
+            {% elif m.tags == 'alert-info' %}
+            <div class="alert alert-info">
+            {{m}}
+            </div>
+            {% else %}
+            <div class="alert alert-danger">
+            {{m}}
+            </div>                           
+            {%endif%}
+        {%endfor%}
+    {%endif%}   
+</div>

@@ -1,0 +1,35 @@
+{% load static %}
+<div class="top-bar">
+    <div class="top-bar-left">
+        <a href="{% url 'agua_app:mediciones_agua_grafica1' %}" class="thumbnail"><img src="{% static 'images/Argos.png' %}" alt="Logo"></a>
+    </div>
+    <div class="top-bar-left">
+        <ul class="dropdown menu" data-dropdown-menu>            
+            <li class="menu-text-left"><h5 class="h4">Sistema de agua recuperada</h5></li>
+            <li>
+                <a href="{% url 'agua_app:mediciones_agua_grafica1' %}"><i class="fi-list"></i><span> Grafica de Volumen</span></a>
+            </li>
+            <li>
+                <a href="{% url 'agua_app:mediciones_agua_grafica2' %}"><i class="fi-list"></i><span> Grafica de Flujo</span></a>
+            </li>
+            <li>
+                <a href="{% url 'agua_app:mediciones_agua_lista' %}"><i class="fi-list"></i><span> Lista General</span></a>
+            </li>
+        </ul>
+    </div>
+    <div class="grid-x top-bar-right">
+        <ul class="menu">
+            <form method="get" class="cell grid-x grid-margin-x">{% csrf_token %}
+                <div class="cell large-7">
+                    <input type="text" name="kword" id="kword" placeholder=" Buscar medicion">
+                </div>
+                <div class="cell large-2">
+                    <button type="submit" class="submit button">Buscar</button>
+                </div>
+            </form>
+        </ul>
+        <ul>
+            <br>
+        </ul>
+    </div>
+</div>

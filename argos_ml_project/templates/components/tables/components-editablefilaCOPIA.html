@@ -1,0 +1,85 @@
+{% extends 'partials/base2.html' %}
+{% load static %}
+
+{% block css%}
+{% include 'partials/css.html' %}
+{% endblock %}
+{% block extra_css %}
+{% endblock %}
+{% block contents %}
+<form method="post">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Pantalla para modificar los datos por fila:</h4>
+                    <br>
+                    
+                    <div class="table-responsive">
+
+                            <table>
+                                <thead class="thead-dark">
+
+                                </thead>
+                                <tbody>
+                                                      
+                                </tbody>
+                                <!-- {{ form.as_table }} -->
+                            </table>
+                            <!-- <button type="submit" class="btn btn-success mb-3"><i class="mdi mdi-truck-fast me-1"></i>Modificar</button> -->
+                                                                    
+                    </div><!-- end table-responsive -->                                                
+                </div><!-- end card-body -->
+            </div><!-- end card -->
+        </div> <!-- end col-12 -->
+    </div> <!-- end row -->
+    <div class="col-sm-6">
+        <div class="text-end">
+            <button type="submit" class="btn btn-success mb-3"><i class="mdi mdi-truck-fast me-1"></i>Modificar</button>
+        </div>
+    </div> <!-- end col-sm-6 -->
+    <BR>
+    <div class="col-sm-6">
+        <div class="text-end">
+            <button type="button" class="btn btn-warning mb-3" onclick="history.back()"><i class="mdi mdi-truck-fast me-1"></i>Volver atrás</button>
+        </div>
+    </div> <!-- end col-sm-8 --> 
+</form><!-- end form -->
+                  
+{% endblock %}
+{% block r_sidebar %}
+
+{% endblock %}
+{% block footer %}
+{% include 'partials/footer.html' %}
+{% endblock %}
+{% block javascript %}
+        <!-- JAVASCRIPT -->
+        <script src="{% static 'libs/jquery/jquery.min.js' %}"></script>
+        <script src="{% static 'libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'libs/metismenu/metisMenu.min.js' %}"></script>
+        <script src="{% static 'libs/simplebar/simplebar.min.js' %}"></script>
+        <script src="{% static 'libs/node-waves/waves.min.js' %}"></script>
+
+         <!-- Table Editable plugin -->
+         <script src="{% static 'libs/table-edits/build/table-edits.min.js' %}"></script>
+
+        <script src="{% static 'js/pages/table-editable.int.js' %}"></script> 
+
+        <script src="{% static 'js/app.js' %}"></script>
+
+
+        <script src="{% static 'libs/select2/js/select2.min.js' %}"></script>
+        <script src="{% static 'libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js' %}"></script>
+        <script src="{% static 'libs/spectrum-colorpicker2/spectrum.min.js' %}"></script>
+        <script src="{% static 'libs/bootstrap-timepicker/js/bootstrap-timepicker.min.js' %}"></script>
+        <script src="{% static 'libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js' %}"></script>
+        <script src="{% static 'libs/bootstrap-maxlength/bootstrap-maxlength.min.js' %}"></script>
+        <script src="{% static 'libs/@chenfengyuan/datepicker/datepicker.min.js' %}"></script>
+
+        <!-- form advanced init -->
+        <script src="{% static 'js/pages/form-advanced.init.js' %}"></script>
+
+
+{% endblock %}

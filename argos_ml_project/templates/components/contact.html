@@ -1,0 +1,29 @@
+<!-- contact.html -->
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Contacto</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Contacto</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ form.name.id_for_label }}">Nombre:</label>
+            {{ form.name }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.email.id_for_label }}">Correo electrónico:</label>
+            {{ form.email }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.message.id_for_label }}">Mensaje:</label>
+            {{ form.message }}
+        </div>
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>

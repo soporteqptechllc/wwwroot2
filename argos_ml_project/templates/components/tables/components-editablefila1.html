@@ -1,0 +1,1020 @@
+{% extends 'partials/base11.html' %}
+{% load static %}
+
+{% block css%}
+{% include 'partials/css.html' %}
+{% endblock %}
+{% block extra_css %}
+{% endblock %}
+{% block contents %}
+    <form method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title">Tabla de Operaciones Producidas</h4>
+                        <p class="card-title-desc">Reporte Por Turno (Kg)</p>
+
+                        <div class="table-responsive">
+                            <!-- <table class="table table-editable table-nowrap table-edits table-sm table-bordered table-hover table-striped"> -->
+                            <table class="table table-nowrap table-sm table-bordered table-hover table-striped">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        {% if nolista2txt >= 0 %}
+                                            <th>#</th>
+                                            <th>Código</th>
+                                            <th>Materia Prima</th>
+                                            <th>Real (SP)</th>
+                                        {% endif %}
+                                        {% if nolista2txt >= 1 %}
+                                            <th>1 OP</th>
+                                        {% endif %}
+                                        {% if nolista2txt >= 2 %}
+                                            <th>2 OP</th>
+                                        {% endif %}
+                                        {% if nolista2txt >= 3 %}
+                                            <th>3 OP</th>
+                                        {% endif %}
+                                        {% if nolista2txt >= 4 %}
+                                            <th>4 OP</th>
+                                        {% endif %}
+                                        {% if nolista2txt >= 5 %}
+                                            <th>5 OP</th>
+                                        {% endif %}
+                                        {% if nolista2txt >= 6 %}
+                                            <th>6 OP</th>
+                                        {% endif %}
+                                        {% if nolista2txt >= 7 %}
+                                            <th>7 OP</th>
+                                        {% endif %}
+                                        {% if nolista2txt >= 8 %}
+                                            <th>8 OP</th>
+                                        {% endif %}
+                                        {% if nolista2txt >= 9 %}
+                                            <th>9 OP</th>
+                                        {% endif %}
+                                        {% if nolista2txt >= 10 %}
+                                            <th>10 OP</th>
+                                        {% endif %}
+                                        {% if nolista2txt >= 11 %}
+                                            <th>11 OP</th>
+                                        {% endif %}
+                                        {% if nolista2txt >= 12 %}
+                                            <th>12 OP</th>
+                                        {% endif %}
+                                        {% if nolista2txt >= 13 %}
+                                            <th>13 OP</th>
+                                        {% endif %}
+                                        {% if nolista2txt >= 14 %}
+                                            <th>14 OP</th>
+                                        {% endif %}
+                                        {% if nolista2txt >= 15 %}
+                                            <th>15 OP</th>
+                                        {% endif %}
+                                        {% if nolista2txt >= 16 %}
+                                            <th>16 OP</th>
+                                        {% endif %}
+                                        {% if nolista2txt >= 17 %}
+                                            <th>17 OP</th>
+                                        {% endif %}
+                                        {% if nolista2txt >= 18 %}
+                                            <th>18 OP</th>
+                                        {% endif %}
+                                        {% if nolista2txt >= 19 %}
+                                            <th>19 OP</th>
+                                        {% endif %}
+                                        {% if nolista2txt >= 20 %}
+                                            <th>20 OP</th>
+                                        {% endif %}
+                                        {% if nolista2txt >= 21 %}
+                                            <th>21 OP</th>
+                                        {% endif %}
+                                        {% if nolista2txt >= 22 %}
+                                            <th>22 OP</th>
+                                        {% endif %}
+                                        {% if nolista2txt >= 23 %}
+                                            <th>23 OP</th>
+                                        {% endif %}
+                                        {% if nolista2txt >= 24 %}
+                                            <th>24 OP</th>
+                                        {% endif %}
+                                        {% if nolista2txt >= 25 %}
+                                            <th>25 OP</th>
+                                        {% endif %}
+                                        {% if nolista2txt >= 26 %}
+                                            <th>26 OP</th>
+                                        {% endif %}
+                                        {% if nolista2txt >= 27 %}
+                                            <th>27 OP</th>
+                                        {% endif %}
+                                        {% if nolista2txt >= 28 %}
+                                            <th>28 OP</th>
+                                        {% endif %}
+                                        {% if nolista2txt >= 29 %}
+                                            <th>29 OP</th>
+                                        {% endif %}
+                                        {% if nolista2txt >= 30 %}
+                                            <th>30 OP</th>
+                                        {% endif %}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% if nolista2txt == 0 %}
+                                        {% for c1,c2,c3,c4 in tabla %}<!--inicio for -->
+                                        <tr><!--inicio tr -->
+                                            {% if c1 == nofilatxt %}
+                                                <td data-field="name" align="left">{{c1}}</td>
+                                                <td data-field="name" align="left"><input name="c2" id="c2" type="text" value={{c2}} readonly></td>
+                                                <td data-field="name" align="left">{{c3}}</td>
+                                                <td data-field="name" align="left">{{c4}}</td>
+                                            {% endif %} 
+                                        </tr><!--end tr -->
+                                        {% endfor %}<!--end for --> 
+                                    {% endif %}
+                                    {% if nolista2txt == 1 %}
+                                        {% for c1,c2,c3,c4,c5,ct in tabla %}
+                                        <tr><!--inicio tr -->
+                                            {% if c1 == nofilatxt %}
+                                                <td data-field="name" align="left">{{c1}}</td>
+                                                <td data-field="name" align="left"><input name="c2" id="c2" type="text" value={{c2}} readonly></td>
+                                                <td data-field="name" align="left">{{c3}}</td>
+                                                <td data-field="name" align="left">{{c4}}</td>
+                                                <td data-field="name" align="left"><input name="c5" id="c5" type="number" value={{c5}} step="any"></td>
+                                            {% endif %} 
+                                        </tr><!--end tr -->
+                                        {% endfor %}<!--end for --> 
+                                    {% endif %}
+                                    {% if nolista2txt == 2 %}
+                                        {% for c1,c2,c3,c4,c5,c6,ct in tabla %}
+                                        <tr><!--inicio tr -->
+                                            {% if c1 == nofilatxt %}
+                                                <td data-field="name" align="left">{{c1}}</td>
+                                                <td data-field="name" align="left"><input name="c2" id="c2" type="text" value={{c2}} readonly></td>
+                                                <td data-field="name" align="left">{{c3}}</td>
+                                                <td data-field="name" align="left">{{c4}}</td>
+                                                <td data-field="name" align="left"><input name="c5" id="c5" type="number" value={{c5}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c6" id="c6" type="number" value={{c6}} step="any"></td>
+                                            {% endif %} 
+                                        </tr><!--end tr -->
+                                        {% endfor %}<!--end for --> 
+                                    {% endif %}
+                                    {% if nolista2txt == 3 %}
+                                        {% for c1,c2,c3,c4,c5,c6,c7,ct in tabla %}
+                                        <tr><!--inicio tr -->
+                                            {% if c1 == nofilatxt %}
+                                                <td data-field="name" align="left">{{c1}}</td>
+                                                <td data-field="name" align="left"><input name="c2" id="c2" type="text" value={{c2}} readonly></td>
+                                                <td data-field="name" align="left">{{c3}}</td>
+                                                <td data-field="name" align="left">{{c4}}</td>
+                                                <td data-field="name" align="left"><input name="c5" id="c5" type="number" value={{c5}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c6" id="c6" type="number" value={{c6}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c7" id="c7" type="number" value={{c7}} step="any"></td>
+                                            {% endif %} 
+                                        </tr><!--end tr -->
+                                        {% endfor %}<!--end for --> 
+                                    {% endif %}
+                                    {% if nolista2txt == 4 %}
+                                        {% for c1,c2,c3,c4,c5,c6,c7,C8,ct in tabla %}
+                                        <tr><!--inicio tr -->
+                                            {% if c1 == nofilatxt %}
+                                                <td data-field="name" align="left">{{c1}}</td>
+                                                <td data-field="name" align="left"><input name="c2" id="c2" type="text" value={{c2}} readonly></td>
+                                                <td data-field="name" align="left">{{c3}}</td>
+                                                <td data-field="name" align="left">{{c4}}</td>
+                                                <td data-field="name" align="left"><input name="c5" id="c5" type="number" value={{c5}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c6" id="c6" type="number" value={{c6}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c7" id="c7" type="number" value={{c7}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c8" id="c8" type="number" value={{c8}} step="any"></td>
+                                            {% endif %} 
+                                        </tr><!--end tr -->
+                                        {% endfor %}<!--end for --> 
+                                    {% endif %}
+                                    {% if nolista2txt == 5 %}
+                                        {% for c1,c2,c3,c4,c5,c6,c7,c8,c9,ct in tabla %}
+                                        <tr><!--inicio tr -->
+                                            {% if c1 == nofilatxt %}
+                                                <td data-field="name" align="left">{{c1}}</td>
+                                                <td data-field="name" align="left"><input name="c2" id="c2" type="text" value={{c2}} readonly></td>
+                                                <td data-field="name" align="left">{{c3}}</td>
+                                                <td data-field="name" align="left">{{c4}}</td>
+                                                <td data-field="name" align="left"><input name="c5" id="c5" type="number" value={{c5}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c6" id="c6" type="number" value={{c6}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c7" id="c7" type="number" value={{c7}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c8" id="c8" type="number" value={{c8}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c9" id="c9" type="number" value={{c9}} step="any"></td>
+                                            {% endif %} 
+                                        </tr><!--end tr -->
+                                        {% endfor %}<!--end for --> 
+                                    {% endif %}
+                                    {% if nolista2txt == 6 %}
+                                        {% for c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,ct in tabla %}
+                                        <tr><!--inicio tr -->
+                                            {% if c1 == nofilatxt %}
+                                                <td data-field="name" align="left">{{c1}}</td>
+                                                <td data-field="name" align="left"><input name="c2" id="c2" type="text" value={{c2}} readonly></td>
+                                                <td data-field="name" align="left">{{c3}}</td>
+                                                <td data-field="name" align="left">{{c4}}</td>
+                                                <td data-field="name" align="left"><input name="c5" id="c5" type="number" value={{c5}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c6" id="c6" type="number" value={{c6}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c7" id="c7" type="number" value={{c7}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c8" id="c8" type="number" value={{c8}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c9" id="c9" type="number" value={{c9}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c10" id="c10" type="number" value={{c10}} step="any"></td>
+                                            {% endif %} 
+                                        </tr><!--end tr -->
+                                        {% endfor %}<!--end for --> 
+                                    {% endif %}
+                                    {% if nolista2txt == 7 %}
+                                        {% for c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,ct in tabla %}
+                                        <tr><!--inicio tr -->
+                                            {% if c1 == nofilatxt %}
+                                                <td data-field="name" align="left">{{c1}}</td>
+                                                <td data-field="name" align="left"><input name="c2" id="c2" type="text" value={{c2}} readonly></td>
+                                                <td data-field="name" align="left">{{c3}}</td>
+                                                <td data-field="name" align="left">{{c4}}</td>
+                                                <td data-field="name" align="left"><input name="c5" id="c5" type="number" value={{c5}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c6" id="c6" type="number" value={{c6}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c7" id="c7" type="number" value={{c7}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c8" id="c8" type="number" value={{c8}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c9" id="c9" type="number" value={{c9}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c10" id="c10" type="number" value={{c10}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c11" id="c11" type="number" value={{c11}} step="any"></td>
+                                            {% endif %} 
+                                        </tr><!--end tr -->
+                                        {% endfor %}<!--end for --> 
+                                    {% endif %}
+                                    {% if nolista2txt == 8 %}
+                                        {% for c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,ct in tabla %}
+                                        <tr><!--inicio tr -->
+                                            {% if c1 == nofilatxt %}
+                                                <td data-field="name" align="left">{{c1}}</td>
+                                                <td data-field="name" align="left"><input name="c2" id="c2" type="text" value={{c2}} step="any"></td>
+                                                <td data-field="name" align="left">{{c3}}</td>
+                                                <td data-field="name" align="left">{{c4}}</td>
+                                                <td data-field="name" align="left"><input name="c5" id="c5" type="number" value={{c5}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c6" id="c6" type="number" value={{c6}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c7" id="c7" type="number" value={{c7}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c8" id="c8" type="number" value={{c8}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c9" id="c9" type="number" value={{c9}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c10" id="c10" type="number" value={{c10}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c11" id="c11" type="number" value={{c11}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c12" id="c12" type="number" value={{c12}} step="any"></td>
+                                            {% endif %} 
+                                        </tr><!--end tr -->
+                                        {% endfor %}<!--end for --> 
+                                    {% endif %}
+                                    {% if nolista2txt == 9 %}
+                                        {% for c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,ct in tabla %}
+                                        <tr><!--inicio tr -->
+                                            {% if c1 == nofilatxt %}
+                                                <td data-field="name" align="left">{{c1}}</td>
+                                                <td data-field="name" align="left"><input name="c2" id="c2" type="text" value={{c2}} readonly></td>
+                                                <td data-field="name" align="left">{{c3}}</td>
+                                                <td data-field="name" align="left">{{c4}}</td>
+                                                <td data-field="name" align="left"><input name="c5" id="c5" type="number" value={{c5}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c6" id="c6" type="number" value={{c6}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c7" id="c7" type="number" value={{c7}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c8" id="c8" type="number" value={{c8}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c9" id="c9" type="number" value={{c9}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c10" id="c10" type="number" value={{c10}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c11" id="c11" type="number" value={{c11}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c12" id="c12" type="number" value={{c12}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c13" id="c13" type="number" value={{c13}} step="any"></td>
+                                            {% endif %} 
+                                        </tr><!--end tr -->
+                                        {% endfor %}<!--end for --> 
+                                    {% endif %}
+                                    {% if nolista2txt == 10 %}
+                                        {% for c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,ct in tabla %}
+                                        <tr><!--inicio tr -->
+                                            {% if c1 == nofilatxt %}
+                                                <td data-field="name" align="left">{{c1}}</td>
+                                                <td data-field="name" align="left"><input name="c2" id="c2" type="text" value={{c2}} readonly></td>
+                                                <td data-field="name" align="left">{{c3}}</td>
+                                                <td data-field="name" align="left">{{c4}}</td>
+                                                <td data-field="name" align="left"><input name="c5" id="c5" type="number" value={{c5}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c6" id="c6" type="number" value={{c6}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c7" id="c7" type="number" value={{c7}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c8" id="c8" type="number" value={{c8}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c9" id="c9" type="number" value={{c9}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c10" id="c10" type="number" value={{c10}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c11" id="c11" type="number" value={{c11}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c12" id="c12" type="number" value={{c12}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c13" id="c13" type="number" value={{c13}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c14" id="c14" type="number" value={{c14}} step="any"></td>
+                                            {% endif %} 
+                                        </tr><!--end tr -->
+                                        {% endfor %}<!--end for --> 
+                                    {% endif %}
+                                    {% if nolista2txt == 11 %}
+                                        {% for c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,ct in tabla %}
+                                        <tr><!--inicio tr -->
+                                            {% if c1 == nofilatxt %}
+                                                <td data-field="name" align="left">{{c1}}</td>
+                                                <td data-field="name" align="left"><input name="c2" id="c2" type="text" value={{c2}} readonly></td>
+                                                <td data-field="name" align="left">{{c3}}</td>
+                                                <td data-field="name" align="left">{{c4}}</td>
+                                                <td data-field="name" align="left"><input name="c5" id="c5" type="number" value={{c5}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c6" id="c6" type="number" value={{c6}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c7" id="c7" type="number" value={{c7}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c8" id="c8" type="number" value={{c8}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c9" id="c9" type="number" value={{c9}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c10" id="c10" type="number" value={{c10}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c11" id="c11" type="number" value={{c11}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c12" id="c12" type="number" value={{c12}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c13" id="c13" type="number" value={{c13}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c14" id="c14" type="number" value={{c14}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c15" id="c15" type="number" value={{c15}} step="any"></td>
+                                            {% endif %} 
+                                        </tr><!--end tr -->
+                                        {% endfor %}<!--end for --> 
+                                    {% endif %}
+                                    {% if nolista2txt == 12 %}
+                                        {% for c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,ct in tabla %}
+                                        <tr><!--inicio tr -->
+                                            {% if c1 == nofilatxt %}
+                                                <td data-field="name" align="left">{{c1}}</td>
+                                                
+                                                <td data-field="name" align="left"><input name="c2" id="c2" type="text" value={{c2}} readonly></td>
+                                                <td data-field="name" align="left">{{c3}}</td>
+                                                <td data-field="name" align="left">{{c4}}</td>
+                                                <td data-field="name" align="left"><input name="c5" id="c5" type="number" value={{c5}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c6" id="c6" type="number" value={{c6}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c7" id="c7" type="number" value={{c7}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c8" id="c8" type="number" value={{c8}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c9" id="c9" type="number" value={{c9}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c10" id="c10" type="number" value={{c10}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c11" id="c11" type="number" value={{c11}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c12" id="c12" type="number" value={{c12}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c13" id="c13" type="number" value={{c13}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c14" id="c14" type="number" value={{c14}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c15" id="c15" type="number" value={{c15}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c16" id="c16" type="number" value={{c16}} step="any"></td>
+                                            {% endif %} 
+                                        </tr><!--end tr -->
+                                        {% endfor %}<!--end for --> 
+                                    {% endif %}
+                                    {% if nolista2txt == 13 %}
+                                        {% for c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,ct in tabla %}
+                                        <tr><!--inicio tr -->
+                                            {% if c1 == nofilatxt %}
+                                                <td data-field="name" align="left">{{c1}}</td>
+                                                <td data-field="name" align="left"><input name="c2" id="c2" type="text" value={{c2}} readonly></td>
+                                                <td data-field="name" align="left">{{c3}}</td>
+                                                <td data-field="name" align="left">{{c4}}</td>
+                                                <td data-field="name" align="left"><input name="c5" id="c5" type="number" value={{c5}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c6" id="c6" type="number" value={{c6}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c7" id="c7" type="number" value={{c7}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c8" id="c8" type="number" value={{c8}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c9" id="c9" type="number" value={{c9}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c10" id="c10" type="number" value={{c10}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c11" id="c11" type="number" value={{c11}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c12" id="c12" type="number" value={{c12}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c13" id="c13" type="number" value={{c13}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c14" id="c14" type="number" value={{c14}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c15" id="c15" type="number" value={{c15}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c16" id="c16" type="number" value={{c16}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c17" id="c17" type="number" value={{c17}} step="any"></td>
+                                            {% endif %} 
+                                        </tr><!--end tr -->
+                                        {% endfor %}<!--end for --> 
+                                    {% endif %}
+                                    {% if nolista2txt == 14 %}
+                                        {% for c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,ct in tabla %}
+                                        <tr><!--inicio tr -->
+                                            {% if c1 == nofilatxt %}
+                                                <td data-field="name" align="left">{{c1}}</td>
+                                                <td data-field="name" align="left"><input name="c2" id="c2" type="text" value={{c2}} readonly></td>
+                                                <td data-field="name" align="left">{{c3}}</td>
+                                                <td data-field="name" align="left">{{c4}}</td>
+                                                <td data-field="name" align="left"><input name="c5" id="c5" type="number" value={{c5}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c6" id="c6" type="number" value={{c6}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c7" id="c7" type="number" value={{c7}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c8" id="c8" type="number" value={{c8}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c9" id="c9" type="number" value={{c9}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c10" id="c10" type="number" value={{c10}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c11" id="c11" type="number" value={{c11}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c12" id="c12" type="number" value={{c12}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c13" id="c13" type="number" value={{c13}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c14" id="c14" type="number" value={{c14}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c15" id="c15" type="number" value={{c15}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c16" id="c16" type="number" value={{c16}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c17" id="c17" type="number" value={{c17}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c18" id="c18" type="number" value={{c18}} step="any"></td>
+                                            {% endif %} 
+                                        </tr><!--end tr -->
+                                        {% endfor %}<!--end for --> 
+                                    {% endif %}
+                                    {% if nolista2txt == 15 %}
+                                        {% for c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,ct in tabla %}
+                                        <tr><!--inicio tr -->
+                                            {% if c1 == nofilatxt %}
+                                                <td data-field="name" align="left">{{c1}}</td>
+                                                <td data-field="name" align="left"><input name="c2" id="c2" type="text" value={{c2}} readonly></td>
+                                                <td data-field="name" align="left">{{c3}}</td>
+                                                <td data-field="name" align="left">{{c4}}</td>
+                                                <td data-field="name" align="left"><input name="c5" id="c5" type="number" value={{c5}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c6" id="c6" type="number" value={{c6}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c7" id="c7" type="number" value={{c7}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c8" id="c8" type="number" value={{c8}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c9" id="c9" type="number" value={{c9}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c10" id="c10" type="number" value={{c10}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c11" id="c11" type="number" value={{c11}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c12" id="c12" type="number" value={{c12}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c13" id="c13" type="number" value={{c13}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c14" id="c14" type="number" value={{c14}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c15" id="c15" type="number" value={{c15}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c16" id="c16" type="number" value={{c16}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c17" id="c17" type="number" value={{c17}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c18" id="c18" type="number" value={{c18}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c19" id="c19" type="number" value={{c19}} step="any"></td>
+                                            {% endif %} 
+                                        </tr><!--end tr -->
+                                        {% endfor %}<!--end for --> 
+                                    {% endif %}
+                                    {% if nolista2txt == 16 %}
+                                        {% for c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,ct in tabla %}
+                                        <tr><!--inicio tr -->
+                                            {% if c1 == nofilatxt %}
+                                                <td data-field="name" align="left">{{c1}}</td>
+                                                <td data-field="name" align="left"><input name="c2" id="c2" type="text" value={{c2}} readonly></td>
+                                                <td data-field="name" align="left">{{c3}}</td>
+                                                <td data-field="name" align="left">{{c4}}</td>
+                                                <td data-field="name" align="left"><input name="c5" id="c5" type="number" value={{c5}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c6" id="c6" type="number" value={{c6}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c7" id="c7" type="number" value={{c7}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c8" id="c8" type="number" value={{c8}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c9" id="c9" type="number" value={{c9}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c10" id="c10" type="number" value={{c10}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c11" id="c11" type="number" value={{c11}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c12" id="c12" type="number" value={{c12}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c13" id="c13" type="number" value={{c13}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c14" id="c14" type="number" value={{c14}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c15" id="c15" type="number" value={{c15}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c16" id="c16" type="number" value={{c16}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c17" id="c17" type="number" value={{c17}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c18" id="c18" type="number" value={{c18}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c19" id="c19" type="number" value={{c19}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c20" id="c20" type="number" value={{c20}} step="any"></td>
+                                            {% endif %} 
+                                        </tr><!--end tr -->
+                                        {% endfor %}<!--end for --> 
+                                    {% endif %}
+                                    {% if nolista2txt == 17 %}
+                                        {% for c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,c21,ct in tabla %}
+                                        <tr><!--inicio tr -->
+                                            {% if c1 == nofilatxt %}
+                                                <td data-field="name" align="left">{{c1}}</td>
+                                                <td data-field="name" align="left"><input name="c2" id="c2" type="text" value={{c2}} readonly></td>
+                                                <td data-field="name" align="left">{{c3}}</td>
+                                                <td data-field="name" align="left">{{c4}}</td>
+                                                <td data-field="name" align="left"><input name="c5" id="c5" type="number" value={{c5}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c6" id="c6" type="number" value={{c6}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c7" id="c7" type="number" value={{c7}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c8" id="c8" type="number" value={{c8}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c9" id="c9" type="number" value={{c9}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c10" id="c10" type="number" value={{c10}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c11" id="c11" type="number" value={{c11}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c12" id="c12" type="number" value={{c12}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c13" id="c13" type="number" value={{c13}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c14" id="c14" type="number" value={{c14}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c15" id="c15" type="number" value={{c15}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c16" id="c16" type="number" value={{c16}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c17" id="c17" type="number" value={{c17}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c18" id="c18" type="number" value={{c18}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c19" id="c19" type="number" value={{c19}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c20" id="c20" type="number" value={{c20}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c21" id="c21" type="number" value={{c21}} step="any"></td>
+
+                                            {% endif %} 
+                                        </tr><!--end tr -->
+                                        {% endfor %}<!--end for --> 
+                                    {% endif %}                                    
+                                    {% if nolista2txt == 18 %}
+                                        {% for c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,c21,c22,ct in tabla %}
+                                        <tr><!--inicio tr -->
+                                            {% if c1 == nofilatxt %}
+                                                <td data-field="name" align="left">{{c1}}</td>
+                                                <td data-field="name" align="left"><input name="c2" id="c2" type="text" value={{c2}} readonly></td>
+                                                <td data-field="name" align="left">{{c3}}</td>
+                                                <td data-field="name" align="left">{{c4}}</td>
+                                                <td data-field="name" align="left"><input name="c5" id="c5" type="number" value={{c5}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c6" id="c6" type="number" value={{c6}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c7" id="c7" type="number" value={{c7}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c8" id="c8" type="number" value={{c8}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c9" id="c9" type="number" value={{c9}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c10" id="c10" type="number" value={{c10}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c11" id="c11" type="number" value={{c11}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c12" id="c12" type="number" value={{c12}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c13" id="c13" type="number" value={{c13}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c14" id="c14" type="number" value={{c14}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c15" id="c15" type="number" value={{c15}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c16" id="c16" type="number" value={{c16}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c17" id="c17" type="number" value={{c17}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c18" id="c18" type="number" value={{c18}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c19" id="c19" type="number" value={{c19}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c20" id="c20" type="number" value={{c20}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c21" id="c21" type="number" value={{c21}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c22" id="c22" type="number" value={{c22}} step="any"></td>
+                                            {% endif %} 
+                                        </tr><!--end tr -->
+                                        {% endfor %}<!--end for --> 
+                                    {% endif %}
+                                    {% if nolista2txt == 19 %}
+                                        {% for c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,c21,c22,c23,ct in tabla %}
+                                        <tr><!--inicio tr -->
+                                            {% if c1 == nofilatxt %}
+                                                <td data-field="name" align="left">{{c1}}</td>
+                                                <td data-field="name" align="left"><input name="c2" id="c2" type="text" value={{c2}} readonly></td>
+                                                <td data-field="name" align="left">{{c3}}</td>
+                                                <td data-field="name" align="left">{{c4}}</td>
+                                                <td data-field="name" align="left"><input name="c5" id="c5" type="number" value={{c5}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c6" id="c6" type="number" value={{c6}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c7" id="c7" type="number" value={{c7}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c8" id="c8" type="number" value={{c8}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c9" id="c9" type="number" value={{c9}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c10" id="c10" type="number" value={{c10}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c11" id="c11" type="number" value={{c11}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c12" id="c12" type="number" value={{c12}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c13" id="c13" type="number" value={{c13}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c14" id="c14" type="number" value={{c14}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c15" id="c15" type="number" value={{c15}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c16" id="c16" type="number" value={{c16}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c17" id="c17" type="number" value={{c17}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c18" id="c18" type="number" value={{c18}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c19" id="c19" type="number" value={{c19}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c20" id="c20" type="number" value={{c20}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c21" id="c21" type="number" value={{c21}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c22" id="c22" type="number" value={{c22}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c23" id="c23" type="number" value={{c23}} step="any"></td>
+                                            {% endif %} 
+                                        </tr><!--end tr -->
+                                        {% endfor %}<!--end for --> 
+                                    {% endif %}                                    
+                                    {% if nolista2txt == 20 %}
+                                        {% for c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,c21,c22,c23,c24,ct in tabla %}
+                                        <tr><!--inicio tr -->
+                                            {% if c1 == nofilatxt %}
+                                                <td data-field="name" align="left">{{c1}}</td>
+                                                <td data-field="name" align="left"><input name="c2" id="c2" type="text" value={{c2}} readonly></td>
+                                                <td data-field="name" align="left">{{c3}}</td>
+                                                <td data-field="name" align="left">{{c4}}</td>
+                                                <td data-field="name" align="left"><input name="c5" id="c5" type="number" value={{c5}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c6" id="c6" type="number" value={{c6}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c7" id="c7" type="number" value={{c7}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c8" id="c8" type="number" value={{c8}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c9" id="c9" type="number" value={{c9}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c10" id="c10" type="number" value={{c10}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c11" id="c11" type="number" value={{c11}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c12" id="c12" type="number" value={{c12}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c13" id="c13" type="number" value={{c13}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c14" id="c14" type="number" value={{c14}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c15" id="c15" type="number" value={{c15}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c16" id="c16" type="number" value={{c16}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c17" id="c17" type="number" value={{c17}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c18" id="c18" type="number" value={{c18}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c19" id="c19" type="number" value={{c19}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c20" id="c20" type="number" value={{c20}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c21" id="c21" type="number" value={{c21}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c22" id="c22" type="number" value={{c22}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c23" id="c23" type="number" value={{c23}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c24" id="c24" type="number" value={{c24}} step="any"></td>
+                                            {% endif %} 
+                                        </tr><!--end tr -->
+                                        {% endfor %}<!--end for --> 
+                                    {% endif %}
+                                    {% if nolista2txt == 21 %}
+                                        {% for c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,c21,c22,c23,c24,c25,ct in tabla %}
+                                        <tr><!--inicio tr -->
+                                            {% if c1 == nofilatxt %}
+                                                <td data-field="name" align="left">{{c1}}</td>
+                                                <td data-field="name" align="left"><input name="c2" id="c2" type="text" value={{c2}} readonly></td>
+                                                <td data-field="name" align="left">{{c3}}</td>
+                                                <td data-field="name" align="left">{{c4}}</td>
+                                                <td data-field="name" align="left"><input name="c5" id="c5" type="number" value={{c5}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c6" id="c6" type="number" value={{c6}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c7" id="c7" type="number" value={{c7}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c8" id="c8" type="number" value={{c8}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c9" id="c9" type="number" value={{c9}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c10" id="c10" type="number" value={{c10}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c11" id="c11" type="number" value={{c11}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c12" id="c12" type="number" value={{c12}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c13" id="c13" type="number" value={{c13}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c14" id="c14" type="number" value={{c14}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c15" id="c15" type="number" value={{c15}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c16" id="c16" type="number" value={{c16}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c17" id="c17" type="number" value={{c17}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c18" id="c18" type="number" value={{c18}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c19" id="c19" type="number" value={{c19}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c20" id="c20" type="number" value={{c20}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c21" id="c21" type="number" value={{c21}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c22" id="c22" type="number" value={{c22}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c23" id="c23" type="number" value={{c23}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c24" id="c24" type="number" value={{c24}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c25" id="c25" type="number" value={{c25}} step="any"></td>
+                                            {% endif %} 
+                                        </tr><!--end tr -->
+                                        {% endfor %}<!--end for --> 
+                                    {% endif %}
+                                    {% if nolista2txt == 22 %}
+                                        {% for c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,c21,c22,c23,c24,c25,c26,ct in tabla %}
+                                        <tr><!--inicio tr -->
+                                            {% if c1 == nofilatxt %}
+                                                <td data-field="name" align="left">{{c1}}</td>
+                                                <td data-field="name" align="left"><input name="c2" id="c2" type="text" value={{c2}} readonly></td>
+                                                <td data-field="name" align="left">{{c3}}</td>
+                                                <td data-field="name" align="left">{{c4}}</td>
+                                                <td data-field="name" align="left"><input name="c5" id="c5" type="number" value={{c5}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c6" id="c6" type="number" value={{c6}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c7" id="c7" type="number" value={{c7}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c8" id="c8" type="number" value={{c8}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c9" id="c9" type="number" value={{c9}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c10" id="c10" type="number" value={{c10}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c11" id="c11" type="number" value={{c11}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c12" id="c12" type="number" value={{c12}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c13" id="c13" type="number" value={{c13}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c14" id="c14" type="number" value={{c14}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c15" id="c15" type="number" value={{c15}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c16" id="c16" type="number" value={{c16}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c17" id="c17" type="number" value={{c17}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c18" id="c18" type="number" value={{c18}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c19" id="c19" type="number" value={{c19}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c20" id="c20" type="number" value={{c20}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c21" id="c21" type="number" value={{c21}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c22" id="c22" type="number" value={{c22}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c23" id="c23" type="number" value={{c23}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c24" id="c24" type="number" value={{c24}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c25" id="c25" type="number" value={{c25}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c26" id="c26" type="number" value={{c26}} step="any"></td>
+                                            {% endif %} 
+                                        </tr><!--end tr -->
+                                        {% endfor %}<!--end for --> 
+                                    {% endif %}
+                                    {% if nolista2txt == 23 %}
+                                        {% for c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,c21,c22,c23,c24,c25,c26,c27,ct in tabla %}
+                                        <tr><!--inicio tr -->
+                                            {% if c1 == nofilatxt %}
+                                                <td data-field="name" align="left">{{c1}}</td>
+                                                <td data-field="name" align="left"><input name="c2" id="c2" type="text" value={{c2}} readonly></td>
+                                                <td data-field="name" align="left">{{c3}}</td>
+                                                <td data-field="name" align="left">{{c4}}</td>
+                                                <td data-field="name" align="left"><input name="c5" id="c5" type="number" value={{c5}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c6" id="c6" type="number" value={{c6}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c7" id="c7" type="number" value={{c7}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c8" id="c8" type="number" value={{c8}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c9" id="c9" type="number" value={{c9}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c10" id="c10" type="number" value={{c10}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c11" id="c11" type="number" value={{c11}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c12" id="c12" type="number" value={{c12}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c13" id="c13" type="number" value={{c13}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c14" id="c14" type="number" value={{c14}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c15" id="c15" type="number" value={{c15}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c16" id="c16" type="number" value={{c16}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c17" id="c17" type="number" value={{c17}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c18" id="c18" type="number" value={{c18}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c19" id="c19" type="number" value={{c19}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c20" id="c20" type="number" value={{c20}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c21" id="c21" type="number" value={{c21}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c22" id="c22" type="number" value={{c22}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c23" id="c23" type="number" value={{c23}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c24" id="c24" type="number" value={{c24}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c25" id="c25" type="number" value={{c25}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c26" id="c26" type="number" value={{c26}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c27" id="c27" type="number" value={{c27}} step="any"></td>
+                                            {% endif %} 
+                                        </tr><!--end tr -->
+                                        {% endfor %}<!--end for --> 
+                                    {% endif %}
+                                    {% if nolista2txt == 24 %}
+                                        {% for c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,c21,c22,c23,c24,c25,c26,c27,c28,ct in tabla %}
+                                        <tr><!--inicio tr -->
+                                            {% if c1 == nofilatxt %}
+                                                <td data-field="name" align="left">{{c1}}</td>
+                                                <td data-field="name" align="left"><input name="c2" id="c2" type="text" value={{c2}} readonly></td>
+                                                <td data-field="name" align="left">{{c3}}</td>
+                                                <td data-field="name" align="left">{{c4}}</td>
+                                                <td data-field="name" align="left"><input name="c5" id="c5" type="number" value={{c5}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c6" id="c6" type="number" value={{c6}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c7" id="c7" type="number" value={{c7}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c8" id="c8" type="number" value={{c8}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c9" id="c9" type="number" value={{c9}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c10" id="c10" type="number" value={{c10}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c11" id="c11" type="number" value={{c11}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c12" id="c12" type="number" value={{c12}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c13" id="c13" type="number" value={{c13}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c14" id="c14" type="number" value={{c14}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c15" id="c15" type="number" value={{c15}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c16" id="c16" type="number" value={{c16}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c17" id="c17" type="number" value={{c17}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c18" id="c18" type="number" value={{c18}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c19" id="c19" type="number" value={{c19}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c20" id="c20" type="number" value={{c20}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c21" id="c21" type="number" value={{c21}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c22" id="c22" type="number" value={{c22}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c23" id="c23" type="number" value={{c23}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c24" id="c24" type="number" value={{c24}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c25" id="c25" type="number" value={{c25}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c26" id="c26" type="number" value={{c26}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c27" id="c27" type="number" value={{c27}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c28" id="c28" type="number" value={{c28}} step="any"></td>
+                                            {% endif %} 
+                                        </tr><!--end tr -->
+                                        {% endfor %}<!--end for --> 
+                                    {% endif %}
+                                    {% if nolista2txt == 25 %}
+                                        {% for c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,c21,c22,c23,c24,c25,c26,c27,c28,c29,ct in tabla %}
+                                        <tr><!--inicio tr -->
+                                            {% if c1 == nofilatxt %}
+                                                <td data-field="name" align="left">{{c1}}</td>
+                                                <td data-field="name" align="left"><input name="c2" id="c2" type="text" value={{c2}} readonly></td>
+                                                <td data-field="name" align="left">{{c3}}</td>
+                                                <td data-field="name" align="left">{{c4}}</td>
+                                                <td data-field="name" align="left"><input name="c5" id="c5" type="number" value={{c5}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c6" id="c6" type="number" value={{c6}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c7" id="c7" type="number" value={{c7}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c8" id="c8" type="number" value={{c8}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c9" id="c9" type="number" value={{c9}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c10" id="c10" type="number" value={{c10}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c11" id="c11" type="number" value={{c11}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c12" id="c12" type="number" value={{c12}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c13" id="c13" type="number" value={{c13}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c14" id="c14" type="number" value={{c14}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c15" id="c15" type="number" value={{c15}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c16" id="c16" type="number" value={{c16}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c17" id="c17" type="number" value={{c17}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c18" id="c18" type="number" value={{c18}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c19" id="c19" type="number" value={{c19}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c20" id="c20" type="number" value={{c20}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c21" id="c21" type="number" value={{c21}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c22" id="c22" type="number" value={{c22}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c23" id="c23" type="number" value={{c23}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c24" id="c24" type="number" value={{c24}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c25" id="c25" type="number" value={{c25}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c26" id="c26" type="number" value={{c26}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c27" id="c27" type="number" value={{c27}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c28" id="c28" type="number" value={{c28}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c29" id="c29" type="number" value={{c29}} step="any"></td>                                                
+                                            {% endif %} 
+                                        </tr><!--end tr -->
+                                        {% endfor %}<!--end for --> 
+                                    {% endif %}
+                                    {% if nolista2txt == 26 %}
+                                        {% for c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,c21,c22,c23,c24,c25,c26,c27,c28,c29,c30,ct in tabla %}
+                                        <tr><!--inicio tr -->
+                                            {% if c1 == nofilatxt %}
+                                                <td data-field="name" align="left">{{c1}}</td>
+                                                <td data-field="name" align="left"><input name="c2" id="c2" type="text" value={{c2}} readonly></td>
+                                                <td data-field="name" align="left">{{c3}}</td>
+                                                <td data-field="name" align="left">{{c4}}</td>
+                                                <td data-field="name" align="left"><input name="c5" id="c5" type="number" value={{c5}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c6" id="c6" type="number" value={{c6}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c7" id="c7" type="number" value={{c7}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c8" id="c8" type="number" value={{c8}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c9" id="c9" type="number" value={{c9}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c10" id="c10" type="number" value={{c10}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c11" id="c11" type="number" value={{c11}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c12" id="c12" type="number" value={{c12}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c13" id="c13" type="number" value={{c13}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c14" id="c14" type="number" value={{c14}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c15" id="c15" type="number" value={{c15}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c16" id="c16" type="number" value={{c16}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c17" id="c17" type="number" value={{c17}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c18" id="c18" type="number" value={{c18}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c19" id="c19" type="number" value={{c19}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c20" id="c20" type="number" value={{c20}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c21" id="c21" type="number" value={{c21}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c22" id="c22" type="number" value={{c22}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c23" id="c23" type="number" value={{c23}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c24" id="c24" type="number" value={{c24}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c25" id="c25" type="number" value={{c25}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c26" id="c26" type="number" value={{c26}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c27" id="c27" type="number" value={{c27}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c28" id="c28" type="number" value={{c28}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c29" id="c29" type="number" value={{c29}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c30" id="c30" type="number" value={{c30}} step="any"></td>                                                 
+                                            {% endif %} 
+                                        </tr><!--end tr -->
+                                        {% endfor %}<!--end for --> 
+                                    {% endif %}
+                                    {% if nolista2txt == 27 %}
+                                        {% for c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,c21,c22,c23,c24,c25,c26,c27,c28,c29,c30,c31,ct in tabla %}
+                                        <tr><!--inicio tr -->
+                                            {% if c1 == nofilatxt %}
+                                                <td data-field="name" align="left">{{c1}}</td>
+                                                <td data-field="name" align="left"><input name="c2" id="c2" type="text" value={{c2}} readonly></td>
+                                                <td data-field="name" align="left">{{c3}}</td>
+                                                <td data-field="name" align="left">{{c4}}</td>
+                                                <td data-field="name" align="left"><input name="c5" id="c5" type="number" value={{c5}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c6" id="c6" type="number" value={{c6}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c7" id="c7" type="number" value={{c7}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c8" id="c8" type="number" value={{c8}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c9" id="c9" type="number" value={{c9}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c10" id="c10" type="number" value={{c10}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c11" id="c11" type="number" value={{c11}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c12" id="c12" type="number" value={{c12}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c13" id="c13" type="number" value={{c13}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c14" id="c14" type="number" value={{c14}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c15" id="c15" type="number" value={{c15}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c16" id="c16" type="number" value={{c16}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c17" id="c17" type="number" value={{c17}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c18" id="c18" type="number" value={{c18}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c19" id="c19" type="number" value={{c19}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c20" id="c20" type="number" value={{c20}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c21" id="c21" type="number" value={{c21}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c22" id="c22" type="number" value={{c22}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c23" id="c23" type="number" value={{c23}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c24" id="c24" type="number" value={{c24}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c25" id="c25" type="number" value={{c25}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c26" id="c26" type="number" value={{c26}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c27" id="c27" type="number" value={{c27}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c28" id="c28" type="number" value={{c28}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c29" id="c29" type="number" value={{c29}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c30" id="c30" type="number" value={{c30}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c31" id="c31" type="number" value={{c31}} step="any"></td>                                                 
+                                            {% endif %} 
+                                        </tr><!--end tr -->
+                                        {% endfor %}<!--end for --> 
+                                    {% endif %}
+                                    {% if nolista2txt == 28 %}
+                                        {% for c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,c21,c22,c23,c24,c25,c26,c27,c28,c29,c30,c31,c32,ct in tabla %}
+                                        <tr><!--inicio tr -->
+                                            {% if c1 == nofilatxt %}
+                                                <td data-field="name" align="left">{{c1}}</td>
+                                                <td data-field="name" align="left"><input name="c2" id="c2" type="text" value={{c2}} readonly></td>
+                                                <td data-field="name" align="left">{{c3}}</td>
+                                                <td data-field="name" align="left">{{c4}}</td>
+                                                <td data-field="name" align="left"><input name="c5" id="c5" type="number" value={{c5}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c6" id="c6" type="number" value={{c6}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c7" id="c7" type="number" value={{c7}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c8" id="c8" type="number" value={{c8}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c9" id="c9" type="number" value={{c9}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c10" id="c10" type="number" value={{c10}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c11" id="c11" type="number" value={{c11}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c12" id="c12" type="number" value={{c12}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c13" id="c13" type="number" value={{c13}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c14" id="c14" type="number" value={{c14}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c15" id="c15" type="number" value={{c15}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c16" id="c16" type="number" value={{c16}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c17" id="c17" type="number" value={{c17}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c18" id="c18" type="number" value={{c18}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c19" id="c19" type="number" value={{c19}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c20" id="c20" type="number" value={{c20}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c21" id="c21" type="number" value={{c21}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c22" id="c22" type="number" value={{c22}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c23" id="c23" type="number" value={{c23}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c24" id="c24" type="number" value={{c24}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c25" id="c25" type="number" value={{c25}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c26" id="c26" type="number" value={{c26}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c27" id="c27" type="number" value={{c27}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c28" id="c28" type="number" value={{c28}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c29" id="c29" type="number" value={{c29}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c30" id="c30" type="number" value={{c30}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c31" id="c31" type="number" value={{c31}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c32" id="c32" type="number" value={{c32}} step="any"></td>                                                 
+                                            {% endif %} 
+                                        </tr><!--end tr -->
+                                        {% endfor %}<!--end for --> 
+                                    {% endif %}
+                                    {% if nolista2txt == 29 %}
+                                        {% for c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,c21,c22,c23,c24,c25,c26,c27,c28,c29,c30,c31,c32,c33,ct in tabla %}
+                                        <tr><!--inicio tr -->
+                                            {% if c1 == nofilatxt %}
+                                                <td data-field="name" align="left">{{c1}}</td>
+                                                <td data-field="name" align="left"><input name="c2" id="c2" type="text" value={{c2}} readonly></td>
+                                                <td data-field="name" align="left">{{c3}}</td>
+                                                <td data-field="name" align="left">{{c4}}</td>
+                                                <td data-field="name" align="left"><input name="c5" id="c5" type="number" value={{c5}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c6" id="c6" type="number" value={{c6}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c7" id="c7" type="number" value={{c7}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c8" id="c8" type="number" value={{c8}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c9" id="c9" type="number" value={{c9}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c10" id="c10" type="number" value={{c10}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c11" id="c11" type="number" value={{c11}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c12" id="c12" type="number" value={{c12}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c13" id="c13" type="number" value={{c13}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c14" id="c14" type="number" value={{c14}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c15" id="c15" type="number" value={{c15}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c16" id="c16" type="number" value={{c16}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c17" id="c17" type="number" value={{c17}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c18" id="c18" type="number" value={{c18}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c19" id="c19" type="number" value={{c19}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c20" id="c20" type="number" value={{c20}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c21" id="c21" type="number" value={{c21}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c22" id="c22" type="number" value={{c22}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c23" id="c23" type="number" value={{c23}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c24" id="c24" type="number" value={{c24}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c25" id="c25" type="number" value={{c25}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c26" id="c26" type="number" value={{c26}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c27" id="c27" type="number" value={{c27}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c28" id="c28" type="number" value={{c28}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c29" id="c29" type="number" value={{c29}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c30" id="c30" type="number" value={{c30}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c31" id="c31" type="number" value={{c31}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c32" id="c32" type="number" value={{c32}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c33" id="c33" type="number" value={{c33}} step="any"></td>                                                
+                                            {% endif %} 
+                                        </tr><!--end tr -->
+                                        {% endfor %}<!--end for --> 
+                                    {% endif %}
+                                    {% if nolista2txt >= 30 %}
+                                        {% for c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,c21,c22,c23,c24,c25,c26,c27,c28,c29,c30,c31,c32,c33,c34,ct in tabla %}
+                                        <tr><!--inicio tr -->
+                                            {% if c1 == nofilatxt %}
+                                                <td data-field="name" align="left">{{c1}}</td>
+                                                <td data-field="name" align="left"><input name="c2" id="c2" type="text" value={{c2}} readonly></td>
+                                                <td data-field="name" align="left">{{c3}}</td>
+                                                <td data-field="name" align="left">{{c4}}</td>
+                                                <td data-field="name" align="left"><input name="c5" id="c5" type="number" value={{c5}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c6" id="c6" type="number" value={{c6}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c7" id="c7" type="number" value={{c7}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c8" id="c8" type="number" value={{c8}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c9" id="c9" type="number" value={{c9}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c10" id="c10" type="number" value={{c10}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c11" id="c11" type="number" value={{c11}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c12" id="c12" type="number" value={{c12}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c13" id="c13" type="number" value={{c13}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c14" id="c14" type="number" value={{c14}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c15" id="c15" type="number" value={{c15}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c16" id="c16" type="number" value={{c16}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c17" id="c17" type="number" value={{c17}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c18" id="c18" type="number" value={{c18}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c19" id="c19" type="number" value={{c19}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c20" id="c20" type="number" value={{c20}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c21" id="c21" type="number" value={{c21}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c22" id="c22" type="number" value={{c22}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c23" id="c23" type="number" value={{c23}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c24" id="c24" type="number" value={{c24}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c25" id="c25" type="number" value={{c25}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c26" id="c26" type="number" value={{c26}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c27" id="c27" type="number" value={{c27}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c28" id="c28" type="number" value={{c28}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c29" id="c29" type="number" value={{c29}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c30" id="c30" type="number" value={{c30}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c31" id="c31" type="number" value={{c31}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c32" id="c32" type="number" value={{c32}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c33" id="c33" type="number" value={{c33}} step="any"></td>
+                                                <td data-field="name" align="left"><input name="c34" id="c34" type="number" value={{c34}} step="any"></td>                                                
+                                            {% endif %} 
+                                        </tr><!--end tr -->
+                                        {% endfor %}<!--end for --> 
+                                    {% endif %}
+
+
+                                </tbody>
+                                </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div> <!-- end col -->
+        </div> <!-- end row -->
+        <div class="col-sm-6">
+            <div class="text-end">
+                <button type="submit" class="btn btn-success mb-3"><i class="mdi mdi-truck-fast me-1"></i>Modificar</button>
+            </div>
+        </div> <!-- end col-sm-6 -->
+        <BR>
+        <div class="col-sm-6">
+            <div class="text-end">
+                <button type="button" class="btn btn-warning mb-3" onclick="history.back()"><i class="mdi mdi-truck-fast me-1"></i>Volver atrás</button>
+            </div>
+        </div> <!-- end col-sm-6 -->
+    </form><!-- end form -->                         
+{% endblock %}
+{% block r_sidebar %}
+{% include 'partials/rightsidebar.html' %}
+{% endblock %}
+{% block footer %}
+{% include 'partials/footer.html' %}
+{% endblock %}
+{% block javascript %}
+        <!-- JAVASCRIPT -->
+        <script src="{% static 'libs/jquery/jquery.min.js' %}"></script>
+        <script src="{% static 'libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'libs/metismenu/metisMenu.min.js' %}"></script>
+        <script src="{% static 'libs/simplebar/simplebar.min.js' %}"></script>
+        <script src="{% static 'libs/node-waves/waves.min.js' %}"></script>
+
+         <!-- Table Editable plugin -->
+         <script src="{% static 'libs/table-edits/build/table-edits.min.js' %}"></script>
+
+        <script src="{% static 'js/pages/table-editable.int.js' %}"></script> 
+
+        <script src="{% static 'js/app.js' %}"></script>
+
+
+        <script src="{% static 'libs/select2/js/select2.min.js' %}"></script>
+        <script src="{% static 'libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js' %}"></script>
+        <script src="{% static 'libs/spectrum-colorpicker2/spectrum.min.js' %}"></script>
+        <script src="{% static 'libs/bootstrap-timepicker/js/bootstrap-timepicker.min.js' %}"></script>
+        <script src="{% static 'libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js' %}"></script>
+        <script src="{% static 'libs/bootstrap-maxlength/bootstrap-maxlength.min.js' %}"></script>
+        <script src="{% static 'libs/@chenfengyuan/datepicker/datepicker.min.js' %}"></script>
+
+        <!-- form advanced init -->
+        <script src="{% static 'js/pages/form-advanced.init.js' %}"></script>
+
+
+{% endblock %}

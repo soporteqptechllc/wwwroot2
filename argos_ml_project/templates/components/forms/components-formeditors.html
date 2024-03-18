@@ -1,0 +1,55 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block css%}
+{% include 'partials/css.html' %}
+{% endblock %}
+{% block extra_css %}
+
+{% endblock %}
+{% block contents %}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+        
+                                        <h4 class="card-title">Tinymce wysihtml5</h4>
+                                        <p class="card-title-desc">Bootstrap-wysihtml5 is a javascript
+                                            plugin that makes it easy to create simple, beautiful wysiwyg editors
+                                            with the help of wysihtml5 and Twitter Bootstrap.</p>
+        
+                                        <form method="post">
+                                            <textarea id="elm1" name="area"></textarea>
+                                        </form>
+                                       
+                                    </div>
+                                </div>
+                            </div> <!-- end col -->
+                        </div> <!-- end row -->
+
+                    </div> <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+{% endblock %}
+{% block r_sidebar %}
+{% include 'partials/rightsidebar.html' %}
+{% endblock %}
+{% block footer %}
+{% include 'partials/footer.html' %}
+{% endblock %}
+{% block javascript %}
+        <!-- JAVASCRIPT -->
+        <script src="{% static 'libs/jquery/jquery.min.js' %}"></script>
+        <script src="{% static 'libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'libs/metismenu/metisMenu.min.js' %}"></script>
+        <script src="{% static 'libs/simplebar/simplebar.min.js' %}"></script>
+        <script src="{% static 'libs/node-waves/waves.min.js' %}"></script>
+
+        <!--tinymce js-->
+        <script src="{% static 'libs/tinymce/tinymce.min.js' %}"></script>
+
+        <!-- init js -->
+        <script src="{% static 'js/pages/form-editor.init.js' %}"></script>
+
+        <script src="{% static 'js/app.js' %}"></script>
+{% endblock %}

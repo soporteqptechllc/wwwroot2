@@ -1,0 +1,89 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block css%}
+{% include 'partials/css.html' %}
+{% endblock %}
+{% block extra_css %}
+{% endblock %}
+{% block contents %}
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-body">
+        
+                                        <h4 class="card-title">Markers</h4>
+                                        <p class="card-title-dsec">Example of google maps.</p>
+        
+                                        <div id="gmaps-markers" class="gmaps"></div>
+                                    </div>
+                                </div>
+                            </div> <!-- end col -->
+        
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-body">
+        
+                                        <h4 class="card-title">Overlays</h4>
+                                        <p class="card-title-desc">Example of google maps.</p>
+        
+                                        <div id="gmaps-overlay" class="gmaps"></div>
+                                    </div>
+                                </div>
+                            </div> <!-- end col -->
+                        </div> <!-- end row -->
+        
+        
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-body">
+        
+                                        <h4 class="card-title">Street View Panoramas</h4>
+                                        <p class="card-title-desc">Example of google maps.</p>
+        
+                                        <div id="panorama" class="gmaps-panaroma"></div>
+                                    </div>
+                                </div>
+                            </div> <!-- end col -->
+        
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-body">
+        
+                                        <h4 class="card-title">Map Types</h4>
+                                        <p class="card-title-desc">Example of google maps.</p>
+        
+                                        <div id="gmaps-types" class="gmaps"></div>
+                                    </div>
+                                </div>
+                            </div> <!-- end col -->
+                        </div> <!-- end row -->
+
+                    </div> <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+{% endblock %}
+{% block r_sidebar %}
+{% include 'partials/rightsidebar.html' %}
+{% endblock %}
+{% block footer %}
+{% include 'partials/footer.html' %}
+{% endblock %}
+{% block javascript %}
+<!-- JAVASCRIPT -->
+<script src="{% static 'libs/jquery/jquery.min.js'%}"></script>
+<script src="{% static 'libs/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+<script src="{% static 'libs/metismenu/metisMenu.min.js'%}"></script>
+<script src="{% static 'libs/simplebar/simplebar.min.js'%}"></script>
+<script src="{% static 'libs/node-waves/waves.min.js'%}"></script>
+<!-- google maps api -->
+<script src="https://maps.google.com/maps/api/js?key=AIzaSyCtSAR45TFgZjOs4nBFFZnII-6mMHLfSYI"></script>
+
+<!-- Gmaps file -->
+<script src="{% static 'libs/gmaps/gmaps.min.js' %}"></script>
+        
+<!-- demo codes -->
+<script src="{% static 'js/pages/gmaps.init.js' %}"></script>      
+<script src="{% static 'js/app.js' %}"></script>
+{% endblock %}

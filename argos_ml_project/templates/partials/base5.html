@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Ordenes de Fabricacion" name="Q & P Tech Panama Inc" />
+
+    <title>{{heading}} | Q & P Tech Panama</title>
+    
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{% static 'images/QPLogoChico.png' %}">
+    {% block extra_css %}
+    {% endblock %}
+    {%block css%}
+    {%endblock%}
+</head>
+
+<body  data-layout="horizontal"  data-topbar="colored">
+{% comment %}        
+    {% block header %}
+    {% include 'partials/header.html' %}
+    {% endblock %}
+    {% block sidebar %}
+    {% include 'partials/sidebar.html' %}
+    {% endblock %}  
+{% endcomment %}
+
+
+{% block header %}
+{% include 'partials/hori-header.html' %}
+{% endblock %}
+ 
+{% block sidebar %}
+{% include 'partials/hori-sidebar.html' %}
+{% endblock %} 
+
+
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                            <h4 class="mb-sm-0 font-size-18">{{heading}}</h4>
+
+                            
+                            <div>
+                                <form action="{% url 'components_app:tables-edittables'  1 %}" method="post" class="position-relative">
+                                    {% csrf_token %}
+                                    <!--
+                                    <input type="text" name="fecha" id="fecha" class="form-control" placeholder="dd M, yyyy" data-date-format="dd M, yyyy" data-date-container='#datepicker1' data-provide="datepicker">
+                                    <button type="submit" class="btn btn-primary">Enviar</button>
+                                    -->
+                                    <div class="input-group" id="datepicker1">
+                                        <input type="text" name="fecha" id="fecha" class="form-control" placeholder="yyyy-mm-dd"
+                                            data-date-format="yyyymmdd" data-date-container='#datepicker1' data-provide="datepicker"
+                                            data-date-autoclose="true">
+
+                                        <span class="input-group-text"><i class="mdi mdi-calendar">{{fechatxt}}</i></span><!--"2023-08-03"-->
+                                        <button type="submit" class="btn btn-primary">Enviar</button>
+                                    </div><!-- input-group -->
+                                    
+                                </form>
+                            </div>
+
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><h4 href="javascript: void(0);">{{pageview}}</h4></li>
+                                    <!-- <li class="breadcrumb-item active">{{heading}}</li> -->
+                                </ol>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+                {% block contents %}
+                {% endblock %}
+            </div>
+            <!-- end modal -->
+        </div>
+        <!-- end main content-->
+    </div>
+    <!-- END layout-wrapper -->
+    {% block Subscribe %}
+    {% endblock %} 
+    {% block r_sidebar %}
+    {% endblock %}
+    {% block footer %}
+    {% endblock %}
+    {% block javascript %}
+    {% endblock %}
+</body>
+
+</html>

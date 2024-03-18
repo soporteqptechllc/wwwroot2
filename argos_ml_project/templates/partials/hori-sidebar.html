@@ -1,0 +1,42 @@
+{% load static %}
+{% block sidebar %}
+
+<div class="topnav" style="background-color: #6bb323;"><!-- JG tonos de verdes #5df505-->
+    <div class="container-fluid">
+        <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
+
+            <div class="collapse navbar-collapse" id="topnav-menu-content">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-dashboard" role="button">
+                            <i class="bx bx-home-circle me-2"></i><span key="t-dashboards">Menú de Producción en Mezclado</span>
+                            <div class="arrow-down"></div>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="topnav-dashboard">
+                            <a href="{% url 'boquillas_app:inf_mezclado' %}" class="dropdown-item" key="t-default">Resumen diario de Producción de Mezclado</a>
+                        </div>                                               
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-dashboard" role="button">
+                            <i class="bx bx-home-circle me-2"></i><span key="t-dashboards">Menú de Producción Ensacado</span>
+                            <div class="arrow-down"></div>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="topnav-dashboard">
+                            <a href="{% url 'boquillas_app:inf_ensacado' %}" class="dropdown-item" key="t-default">Resumen diario de Producción Ensacado</a>
+                            <a href="{% url 'boquillas_app:boquillas_all' %}" class="dropdown-item" key="t-default">Tabla General de Boquillas</a>
+                            <a href="{% url 'boquillas_app:list_boquilla' 1 %}" class="dropdown-item" key="t-default">Tabla de la boquilla #1</a>
+                            <a href="{% url 'boquillas_app:list_boquilla' 2 %}" class="dropdown-item" key="t-default">Tabla de la boquilla #2</a>
+                            <a href="{% url 'boquillas_app:list_boquilla' 3 %}" class="dropdown-item" key="t-default">Tabla de la boquilla #3</a>
+
+
+                        </div>                                               
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+    </div>
+
+</div>
+
+{%endblock%}

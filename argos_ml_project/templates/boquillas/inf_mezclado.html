@@ -1,0 +1,315 @@
+{% extends 'partials/base1.html' %}
+{% load static %}
+
+{% block css%}
+{% include 'partials/css.html' %}
+{% endblock %}
+{% block extra_css %}
+{% endblock %}
+{% block contents %}
+<!-- Plugins js - para envio de correo, ventana emergente-->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"> -->
+
+<div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row justify-content-start">
+                          <div class="col-3">
+                            <h4 class="card-title">{{sub_txt1}}</h4>
+                            <p class="card-title-desc">{{sub_txt2}}</p>
+                          </div>
+                        </div><!--end row justify-content-start -->
+                    </div><!--end container -->
+
+                    <!--Inicio tabla #1-->                   
+                    <div class="table-responsive">
+                        <table class="table table-editable table-nowrap table-edits table-sm table-bordered table-hover table-striped">
+                            <thead class="thead-dark">
+                                <tr>                               
+                                    <th COLSPAN=18>RESUMEN DEL DÍA - AGRUPADOS POR PRODUCTO</th>
+                                </tr>                                
+                                <tr>    
+                                                               
+                                        <th>COD.SAP</th>
+                                        <th>PRODUCTO</th>
+                                        <th>LOTE</th>
+                                        <th align="center">Agregado1<br>Teórico</th>
+                                        <th>Agregado1<br>Real</th>
+                                        <th align="center">Agregado2<br>Teórico</th>
+                                        <th>Agregado2<br>Real</th>
+                                        <th>AGRE3 SP</th>
+                                        <th>AGRE3 PV</th>
+                                        <th>AGRE4 SP</th>
+                                        <th>AGRE4 PV</th>
+                                        <th>CEM1 SP</th>
+                                        <th>CEM1 PV</th>
+                                        <th>CEM2 SP</th>
+                                        <th>CEM2 PV</th>
+                                        <th>FECHA INICIO</th>
+                                        <th>FECHA FINAL</th>
+                                        <th>TIEMPO PRODUCCIÓN<br>(HH:MM:SS)</th>                                                                                                                           
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                {% for c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18 in table1 %}<!--inicio for -->
+                                        <tr><!--inicio tr -->
+                                            <td data-field="name" align="right" class="table-success">{{c1}}</td>
+                                            <td data-field="name" align="left" class="table-success">{{c2}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c3}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c4}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c5}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c6}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c7}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c8}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c9}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c10}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c11}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c12}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c13}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c14}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c15}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c17}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c16}}</td>
+                                            <td data-field="name" align="center" class="table-success">{{c18}}</td>                                                                                                                                                                                
+                                        </tr><!--end tr -->
+                                {% endfor %}<!--end for -->
+                                {% for c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12 in table5 %}<!--inicio for -->
+                                        <tr><!--inicio tr -->
+                                            <td data-field="name" align="right" class="table-success" COLSPAN=3><b>TOTALES:</b></td>
+                                            <td data-field="name" align="right" class="table-success">{{c1}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c2}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c3}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c4}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c5}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c6}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c7}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c8}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c9}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c10}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c11}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c12}}</td>                                                                                                                   
+                                        </tr><!--end tr -->
+                                {% endfor %}<!--end for -->   
+                            </tbody>
+                        </table>
+                    </div><!--end tabla #1-->
+
+                    <!--Inicio tabla #2-->
+                     <div class="table-responsive">
+                        <table class="table table-editable table-nowrap table-edits table-sm table-bordered table-hover table-striped">
+                            <thead class="thead-dark">
+                                <tr>                               
+                                    <th COLSPAN=18>RESUMEN DEL DÍA - AGRUPADOS POR TURNO Y POR PRODUCTO</th>
+                                </tr>                                
+                                <tr>    
+                                        <th>TURNO</th>                       
+                                        <th>COD.SAP</th>
+                                        <th>PRODUCTO</th>
+                                        <th>LOTE</th>
+                                        <th>AGRE1 SP</th>
+                                        <th>AGRE1 PV</th>
+                                        <th>AGRE2 SP</th>
+                                        <th>AGRE2 PV</th>
+                                        <th>AGRE3 SP</th>
+                                        <th>AGRE3 PV</th>
+                                        <th>AGRE4 SP</th>
+                                        <th>AGRE4 PV</th>
+                                        <th>CEM1 SP</th>
+                                        <th>CEM1 PV</th>
+                                        <th>CEM2 SP</th>
+                                        <th>CEM2 PV</th>
+                                        <th>FECHA INICIO</th>
+                                        <th>FECHA FINAL</th>
+                                        <th>TIEMPO PRODUCCIÓN<br>(HH:MM:SS)</th> 
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td rowspan={{no_fila2}} style="text-align: center; vertical-align: middle; background-color: #a9a9a9;"><strong>A</strong></td>
+                                </tr>
+                                {% for c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18 in table2 %}<!--inicio for -->                                                                
+                                        <tr><!--inicio tr -->
+                                            <td data-field="name" align="right" class="table-success">{{c1}}</td>
+                                            <td data-field="name" align="left" class="table-success">{{c2}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c3}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c4}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c5}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c6}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c7}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c8}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c9}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c10}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c11}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c12}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c13}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c14}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c15}}</td>
+                                            <td data-field="name" align="left" class="table-success">{{c17}}</td>
+                                            <td data-field="name" align="left" class="table-success">{{c16}}</td>
+                                            <td data-field="name" align="center" class="table-success">{{c18}}</td>                                            
+                                        </tr><!--end tr -->
+                                {% endfor %}<!--end for --> 
+
+                                <tr>
+                                    <td rowspan={{no_fila3}} style="text-align: center; vertical-align: middle; background-color:#6bb323;"><strong>B</strong></td>
+                                </tr>
+                                {% for c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18 in table3 %}<!--inicio for -->                                                               
+                                        <tr><!--inicio tr -->
+                                            <td data-field="name" align="right" class="table-success">{{c1}}</td>
+                                            <td data-field="name" align="left" class="table-success">{{c2}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c3}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c4}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c5}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c6}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c7}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c8}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c9}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c10}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c11}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c12}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c13}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c14}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c15}}</td>
+                                            <td data-field="name" align="left" class="table-success">{{c17}}</td>
+                                            <td data-field="name" align="left" class="table-success">{{c16}}</td>
+                                            <td data-field="name" align="center" class="table-success">{{c18}}</td>                                             
+                                        </tr><!--end tr -->
+                                {% endfor %}<!--end for -->
+                                
+                                <tr>
+                                    <td rowspan={{no_fila4}} style="text-align: center; vertical-align: middle; background-color: #a9a9a9;"><strong>C</strong></td>
+                                </tr>
+                                                                
+                                {% for c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18 in table4 %}<!--inicio for -->                                
+                                        <tr><!--inicio tr -->
+                                            <td data-field="name" align="right" class="table-success">{{c1}}</td>
+                                            <td data-field="name" align="left" class="table-success">{{c2}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c3}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c4}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c5}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c6}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c7}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c8}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c9}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c10}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c11}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c12}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c13}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c14}}</td>
+                                            <td data-field="name" align="right" class="table-success">{{c15}}</td>
+                                            <td data-field="name" align="left" class="table-success">{{c17}}</td>
+                                            <td data-field="name" align="left" class="table-success">{{c16}}</td>
+                                            <td data-field="name" align="center" class="table-success">{{c18}}</td>                                              
+                                        </tr><!--end tr -->
+                                {% endfor %}<!--end for -->                                  
+                            </tbody>
+                            </table>
+                    </div><!--end tabla #2-->
+
+                    <!--Inicio tabla #3-->                   
+                    <div class="table-responsive">
+                        <table class="table table-editable table-nowrap table-edits table-sm table-bordered table-hover table-striped">
+                            <thead class="thead-dark">
+                                <tr>                               
+                                    <th COLSPAN=12>RESUMEN DEL DÍA - AGRUPADOS POR SILO</th>
+                                </tr>                                
+                                <tr>    
+                                                               
+                                        <th>SILO1 mts</th>
+                                        <th>SILO1 ton</th>
+                                        <th>SILO2 mts</th>
+                                        <th>SILO2 ton</th>
+                                        <th>SILO3 mts</th>
+                                        <th>SILO3 ton</th>
+                                        <th>SILO4 mts</th>
+                                        <th>SILO4 ton</th>
+                                        <th>SILO5 mts</th>
+                                        <th>SILO5 ton</th>
+                                        <th>SILO6 mts</th>
+                                        <th>SILO6 ton</th>
+                                                                                                                           
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                {% for c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12 in table6 %}<!--inicio for -->
+                                        <tr><!--inicio tr -->
+                                            <td data-field="name" align="left" class="table-success">{{c1}}</td>
+                                            <td data-field="name" align="left" class="table-success">{{c2}}</td>
+                                            <td data-field="name" align="left" class="table-success">{{c3}}</td>
+                                            <td data-field="name" align="left" class="table-success">{{c4}}</td>
+                                            <td data-field="name" align="left" class="table-success">{{c5}}</td>
+                                            <td data-field="name" align="left" class="table-success">{{c6}}</td>
+                                            <td data-field="name" align="left" class="table-success">{{c7}}</td>
+                                            <td data-field="name" align="left" class="table-success">{{c8}}</td>
+                                            <td data-field="name" align="left" class="table-success">{{c9}}</td>
+                                            <td data-field="name" align="left" class="table-success">{{c10}}</td>
+                                            <td data-field="name" align="left" class="table-success">{{c11}}</td>
+                                            <td data-field="name" align="left" class="table-success">{{c12}}</td>                                                                                                                                                                                
+                                        </tr><!--end tr -->
+                                {% endfor %}<!--end for -->
+                            </tbody>
+                        </table>
+                    </div><!--end tabla #3-->                                        
+                </div>
+            </div>
+        </div> <!-- end col -->       
+    </div> <!-- end row -->
+    <div class="col-sm-6">
+        <div class="text-end">
+            <a href="{% url 'boquillas_app:inf_mezclado' %}" class="btn btn-success mb-3">
+                <i class="mdi mdi-truck-fast me-1"></i>Refrescar</a>
+        </div>
+    </div> <!-- end col -->
+    <!-- Inicio boton de Email -->
+    <div class="text-center mt-4">
+        {% if excelE == 1 and no_fila1 > 1 %}
+        {% csrf_token %}
+        <form>
+            <div class="text-center mt-4">       
+                <button type="button" class="btn btn-primary waves-effect waves-light" onClick="Mensaje();">Creación de archivo</button>
+            </div>
+        </form>
+        {% elif excelE == 0 and no_fila1 > 1 %}
+        <div class="col-12">
+            <h4 align="center" class="my-0" style="color: black; background-color: yellow;"><span class="text-muted me-2">Mensaje: </span>
+                <b> Ya se creo el archivo de Excel, favor presione el link de decarga para descargarlo en la carpeta "Downloads"</b>
+                <br>
+                <br>
+                <a href="{% static 'excel/InformeEnsacadoMezclado.xlsx' %}" download="InformeEnsacadoMezclado.xlsx" class="btn btn-success mb-3">Descarga archivo</a>
+                <br>
+                <b> Favor presionar el botón "Refresh", para luego habilitar el botón de "Creación de archivo"</b>
+            </h4>
+        </div>
+        {% endif %}
+    <br>
+    </div><!-- Fin boton de Email -->    
+{% endblock %}
+
+{% block r_sidebar %}
+{% include 'partials/rightsidebar.html' %}
+{% endblock %}
+
+{% block footer %}
+{% include 'partials/footer.html' %}
+{% endblock %}
+
+{% block javascript %}
+<SCRIPT LANGUAGE="JavaScript">
+    function Mensaje()
+        {
+            swal("Creación de archivo de Excel!", "Está seguro que quiere crear un archivo Excel", "warning", {buttons: true,})
+            .then((value) => {
+                if (value) {
+                window.location = "{% url 'boquillas_app:inf_mezcladoExcel' fechatxt excelE %}";
+                }  
+            });
+        }	
+</SCRIPT>
+{% include 'partials/javascript.html' %}
+{% endblock %}
