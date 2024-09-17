@@ -1,0 +1,164 @@
+{% extends "partials/baseJG.html" %}
+{% block title %}
+ARGOS | {{heading}}
+{% endblock title %}
+{% block content %}<!-- start block contents -->
+{% include 'partials/headerLM3.html'%}
+{% load static %}
+<!-- Plugins js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@latest/dist/Chart.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+<br>
+<div class="container">
+    <div class="row justify-content-md-center">
+        <!--Inicio de la grafica del consumo de agua-->
+        <div class="col-xl-10 col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="product-img position-relative">
+                        <div class="col-12">
+                            <h5 align='CENTER'>Gráfica de barras del consumo de agua de las lanzas del Molino3 (lts) - Año: {{ano}}</h5>
+                            <canvas id="grafica" align='CENTER'></canvas>
+                            <h6 align='CENTER'>Mes del año</h6>
+                            <h7 align='CENTER'>Unidad: Litros por mes</h7>
+                        </div>
+                        <br>
+                        <div class="col-12" align='CENTER'>
+                            <a href="{% url 'agua_app:consumo_agua_lanzas_m3a_grafica' anoD 0 %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"><<</a>
+                            <a href="{% url 'agua_app:consumo_agua_lanzas_m3a_grafica' anoI 0 %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">>></a>            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Fin de la grafica del consumo de agua-->
+        <br>
+        <!-- Inicio boton de Refresh -->
+        <div class="text-center mt-4">
+            {% csrf_token %}
+            <form action="{% url 'agua_app:consumo_agua_lanzas_m3a_grafica' ano 0 %}">
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary waves-effect waves-light">Refresh</button>
+                </div>
+            </form>
+        </div><!-- Fin boton de Refresh -->
+        <!-- Inicio boton de Email -->
+        <div class="text-center mt-4">
+            {% if emailE == 1 %}
+            {% csrf_token %}
+<!--             <form action="{% url 'agua_app:consumo_agua_lanzas_m3a_grafica' ano emailE %}">
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary waves-effect waves-light">Envió de correo</button>
+                </div>
+            </form> -->
+            <form>
+                <div class="text-center mt-4">       
+                    <button type="button" class="btn btn-primary waves-effect waves-light" onClick="Mensaje();">Envió de correo</button>
+                </div>
+            </form>
+            {% else %}
+            <div class="col-12">
+                <h4 align="left" class="my-0" style="color: black; background-color: yellow;"><span class="text-muted me-2">Mensaje: </span>
+                    <b> Ya se Envió el correo con el archivo adjunto, favor presionar el botón "Refresh", para habilitar el botón de "Envió de correo"</b>
+                </h4>
+            </div>
+            {% endif %}
+        <br>
+        </div><!-- Fin boton de Email -->
+    </div><!-- end row -->
+</div><!-- end container -->
+{% block messages %}<!-- start block messages -->
+{% include 'partials/messages.html' %}
+{% endblock messages %}<!-- end block messages -->
+<br>
+<br>
+{% endblock content %}<!-- end block contents -->
+{% block javascript %}
+<SCRIPT LANGUAGE="JavaScript">
+    const ctx = document.getElementById('grafica');
+    // Se declara unas listas vacias
+    var labels = []
+    var datas = []
+    // Se declara unas listas en X y otra en Y
+    //var listay = "880022,958980,1139500,1027340,1074326,34648"; // String desde Django, datos del eje y
+    //var listax = "Enero,Febrero,Marzo,Abril,Mayo,Junio"; // String desde Django, datos del eje x
+    var listay = "{{listaY}}"; // String desde Django, datos del eje y
+    var listax = "{{listaX}}"; // String desde Django, datos del eje x
+    var titulox = "{{tituloX}}"; // string desde Djando, dato titulo de x
+    var arrayY = listay.split(",").map(Number); // conversion de los datos a un tipo array
+    var arrayX = listax.split(",").map(String); // conversion de los datos a un tipo array
+    // Se crean estas listas con la informacion, separando en dos los datos
+    for (var i in arrayX, arrayY) {
+        labels[i] = arrayX[i];
+        datas[i] = Number(arrayY[i]);
+    }
+    //alert("listaY : "+ listay);
+    //alert("listaX : "+ listax);
+    //alert("labels : "+ labels);
+    //alert("datas : "+ datas);
+    const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels : labels,
+            //labels : ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+            datasets: [{
+                label: titulox,
+                data: datas,
+                //data: [880022,958980,1139500,1027340,1074326,34648,100000,100000,100000,100000,100000,100000],
+                // Color de fondo
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(54, 162, 235, 0.5)'
+                ],
+                 // Color del borde
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)'
+                ],
+                borderWidth: 1 // Ancho del borde
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+<SCRIPT LANGUAGE="JavaScript">
+    function Mensaje()
+        {
+            swal("Envió de correo!", "Está seguro que quiere enviar el correo con el archivo Excel", "warning", {buttons: true,})
+            .then((value) => {
+                if (value) {
+                window.location = "{% url 'agua_app:consumo_agua_lanzas_m3a_grafica' ano emailE %}";
+                }  
+            });
+        }	
+</SCRIPT>
+{% endblock javascript %}
+

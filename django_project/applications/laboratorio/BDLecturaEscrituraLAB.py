@@ -5,7 +5,8 @@
 import os
 import sys
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_project.settings")
-sys.path.append("Q:\QPTECH\django_project\applications\laboratorio")
+#sys.path.append("Q:\QPTECH\django_project\applications\laboratorio")
+sys.path.append("C:\inetpub\wwwroot\django_project\applications\laboratorio")
 # Local Models
 #from models import ReporteLAB
 # Import SQLServer
@@ -13,6 +14,17 @@ import pyodbc
 # Import PostgreSQL
 import psycopg2
 import datetime
+# Funcion de extración de números reales
+def string_real(string1):
+    import re
+    # Expresión regular para números reales
+    #patron = r"[-+]?\d*\.\d+|\d+"
+    patron = r"\d+(.\d+)?"
+    num_real =re.findall(patron,string1)
+    if num_real[0]:
+        return float(num_real[0])
+    else:
+        return 0.0
 colufecha = list()
 colu0 = list()
 colu1 = list()
@@ -114,6 +126,12 @@ try:
     cnxn3 = psycopg2.connect(**credenciales)   
     cursor3 = cnxn3.cursor()
     # ****************************** INICIO DESPACHO **********************************************
+    # Limpiar algunos Datos corructos de la Columna 'Valor'
+    texto_query = """
+    UPDATE DatoPromedios SET Valor = REPLACE(Valor,'<','') WHERE Valor LIKE \'%%<%%\'
+    """
+    # Ejecutar una consulta
+    cursor1.execute(texto_query)
     # Declaro variable de id de cemento
     #print("Inicio de la creacion de las filas 0 al 12")
     # Crear el texto del Query
@@ -250,7 +268,9 @@ try:
 
             if not row:
                 break
-            #print(row[0])
+
+            #print('datos: ',fila,row[0],row[2])
+
             if row[3] == 0 and row[0] ==  70:               
                 if not row[2]:
                     coluK[fila] = row[2]
@@ -335,7 +355,7 @@ try:
                 if not row[2]:
                     coluY[fila] = row[2]
                 else:
-                    coluY[fila] = float(row[2])                                                                     
+                    coluY[fila] = float(row[2])                                                                    
             elif row[3] == 0 and row[0] ==  55:
                 if not row[2]:
                     coluZ[fila] = row[2]
@@ -432,6 +452,7 @@ try:
                 else:
                     coluAY[fila] = float(row[2])/100 
             elif row[3] == 0 and row[0] ==  11:
+                #print('datos: ',fila,row[0],row[2])
                 if not row[2]:
                     coluAZ[fila] = row[2]
                 else:

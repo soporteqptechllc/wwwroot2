@@ -1,0 +1,196 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block css%}
+{% include 'partials/css.html' %}
+{% endblock %}
+{% block extra%}
+{% endblock %}
+{% block contents %}
+<!-- Plugins js -->
+<!-- <script src="{% static 'js/chart.js-3.9.1/package/dist/chart.js' %}"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@latest/dist/Chart.min.js"></script>
+<!-- start block contents -->
+<div class="row">
+
+    {% for i in tanques %}
+    <!--Caja de Silo, Imagen, Datos de los Silos-->
+    <div class="col-xl-4 col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="product-img position-relative">
+                    <!--Nivel del Silo-->
+                    <div class="avatar-sm product-ribbon">
+                        <span class="avatar-title rounded-circle  bg-primary">
+                            {{i.metros}}m
+                        </span>
+                        <h5 align="left" class="my-0"><span class="text-muted me-2"> </span> <b></b></h5>
+                        <span class="avatar-title rounded-circle  bg-primary">
+                            {{i.nivel}}%
+                        </span>
+                    </div>
+
+
+                    <!--Imagen de Silo-->
+                    <div class="tk{{forloop.counter}}" id="tanq1">
+                                <div class="ring"></div>
+                                <h3 class="text{{forloop.counter}}"></h3>
+                                <div class="lq{{forloop.counter}}" data-amount="{{i.nivel}}">
+                                    <div class="ring{{forloop.counter}}"></div>
+                                </div>
+                    </div>
+
+
+                </div>
+                <!--Bloque de Informacion de Silos-->
+                
+                <div class="mt-4 text-center">
+
+                    <h5 class="mb-3 text-truncate"><a class="cambioColor">{{i.material}}</a></h5>
+                    <hr align="align-items-center" width="100%" size="5px" color="black">
+                    
+                    <h5 align="left" class="my-0"><span class="text-muted me-2">Silo: </span> <b>{{i.silo}}</b></h5>
+                    <h5 align="left" class="my-0"><span class="text-muted me-2">Descripción: </span><b>{{i.description}}</b></h5>
+                    <h5 align="left" class="my-0"><span class="text-muted me-2">Tipo de Cemento: </span> <b>{{i.material}}</b></h5>
+                    <h5 align="left" class="my-0"><span class="text-muted me-2">Código SAP: </span> <b>{{i.codigo_sap}}</b></h5>
+                    <h5 align="left" class="my-0"><span class="text-muted me-2">Toneladas: </span> <b>{{i.toneladas}}</b></h5>
+                    <h5 align="left" class="my-0"><span class="text-muted me-2">Nivel(%): </span> <b>{{i.nivel}}</b></h5>
+                    <h5 align="left" class="my-0"><span class="text-muted me-2">Estado del Silo: </span> <b>{{i.estado_silo}}</b></h5>
+                    <h5 align="left" class="my-0"><span class="text-muted me-2">Fecha del Estado: </span> <b>{{i.fecha_estado_silo}}</b></h5>
+                    <h5 align="left" class="my-0"><span class="text-muted me-2">Estado del Pedido: </span> <b>{{i.estado_pedido}}</b></h5>
+                    <h5 align="left" class="my-0"><span class="text-muted me-2">Fecha Pedido: </span> <b>{{i.fecha_estado_pedido}}</b></h5>
+                    <h5 align="left" class="my-0"><span class="text-muted me-2">Fecha Llenado: </span> <b>{{i.ultimo_llenado}}</b></h5>                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Fin del dibujo del tanque-->
+    <!--Inicio de la grafica del tanque-->
+    <div class="col-xl-8 col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="product-img position-relative">
+                    <!--Nivel del Tanque-->
+                    <div class="avatar-sm product-ribbon">
+                        <span class="avatar-title rounded-circle  bg-primary">
+                            {{i.metros}}m
+                        </span>
+                    </div>
+                    <div class="col-12">
+                        <h5 align='CENTER'>{{i.silo}}</h5>
+                        <h5 align='CENTER'>{{i.description}}</h5>
+                        <h5 align='CENTER'>{{fechaX}}</h5>
+                        <canvas id="grafica" align='CENTER'></canvas>
+                    </div>
+                    <br>
+                    <div class="col-12" align='CENTER'>
+                        <a href="{% url 'SiloJG' silo 2 fechaX %}" class="btn btn-primary btn-lg active" role="button"
+                            aria-pressed="true"><<</a>
+                        <a href="{% url 'SiloJG' silo 3 fechaX %}" class="btn btn-primary btn-lg active" role="button"
+                            aria-pressed="true">>></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Fin de la grafica del tanque-->    
+    {% endfor %}<!-- end for -->
+</div><!-- end row -->
+<!--FIN DEL AREA DE TANQUES-->
+<div class="text-center mt-4">
+    {% csrf_token %}
+    <!--<form action="mezclaslistas"> OJO --WARNING-- ESTE BOTON SIMPRE DE VA HA LLEVAR A LA PANTALLA DE SILO 1 -->
+    <form action="{% url 'SiloJG' silo 1 fechaX %}"> 
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-primary waves-effect waves-light">Refresh</button>
+        </div>
+    </form>
+</div>
+</div><!-- end row -->
+<br>
+{% block messages %}
+{% include 'partials/messages.html' %}
+{% endblock %}
+{% endblock %}
+{% block r_sidebar %}
+{% include 'partials/rightsidebar.html' %}
+{% endblock %}
+{% block footer %}
+{% include 'partials/footer.html' %}
+{% endblock %}
+{% block javascript %}
+        <!-- JAVASCRIPT -->
+        <script src="{% static 'libs/jquery/jquery.min.js' %}"></script>
+        <script src="{% static 'libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'libs/metismenu/metisMenu.min.js' %}"></script>
+        <script src="{% static 'libs/simplebar/simplebar.min.js' %}"></script>
+        <script src="{% static 'libs/node-waves/waves.min.js' %}"></script>
+
+        <!-- Plugins js -->
+        <script src="{% static 'libs/dropzone/min/dropzone.min.js' %}"></script>
+
+        <script src="{% static 'js/app.js' %}"></script>
+        <!-- flot plugins -->
+        <script src="{% static 'libs/flot-charts/jquery.flot.js' %}"></script>
+        <script src="{% static 'libs/flot-charts/jquery.flot.time.js' %}"></script>
+        <script src="{% static 'libs/jquery.flot.tooltip/js/jquery.flot.tooltip.min.js' %}"></script>
+        <script src="{% static 'libs/flot-charts/jquery.flot.resize.js' %}"></script>
+        <script src="{% static 'libs/flot-charts/jquery.flot.pie.js' %}"></script>
+        <script src="{% static 'libs/flot-charts/jquery.flot.selection.js' %}"></script>
+        <script src="{% static 'libs/flot-charts/jquery.flot.stack.js' %}"></script>
+        <script src="{% static 'libs/flot.curvedlines/curvedLines.js' %}"></script>
+        <script src="{% static 'libs/flot-charts/jquery.flot.crosshair.js' %}"></script>
+
+        <!-- flot init -->
+        <script src="{% static 'js/pages/flot.init.js' %}"></script>
+
+<!-- Grafica lineal de JG -->
+<SCRIPT LANGUAGE="JavaScript">
+    // Obtener una referencia al elemento canvas del DOM
+    const $grafica = document.querySelector("#grafica");
+    // Los datos se guardan en una lista con diccionarios internos
+    // Se declara unas listas vacias
+    var labels = []
+    var datas = []
+    // Se declara unas listas en X y otra en Y
+    var listay = "{{listaY}}"; // String desde Django, datos del eje y
+    var listax = "{{listaX}}"; // String desde Django, datos del eje x
+    var titulox = "{{tituloX}}"; // string desde Djando, dato titulo de x
+    var arrayY = listay.split(",").map(Number); // conversion de los datos a un tipo array
+    var arrayX = listax.split(",").map(String); // conversion de los datos a un tipo array
+    // Se crean estas listas con la informacion, separando en dos los datos
+    for (var i in arrayX, arrayY) {
+        labels[i] = arrayX[i];
+        datas[i] = Number(arrayY[i]);
+    }
+    // Podemos tener varios conjuntos de datos
+    const datosLinea01 = {
+        label: titulox,
+        //data: datos, // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
+        data: datas,
+        backgroundColor: 'rgba(54, 162, 235, 0.2)', // Color de fondo
+        borderColor: 'rgba(54, 162, 235, 1)', // Color del borde
+        borderWidth: 1, // Ancho del borde
+    };
+    new Chart($grafica, {
+        type: 'line',// Tipo de gráfica o 'bar'
+        data: {
+            //labels: etiquetas,
+            labels: labels,
+            datasets: [
+                datosLinea01,
+                // Aquí más datos...
+            ]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }],
+            },
+        }
+    });  
+</SCRIPT> 
+{% endblock %}

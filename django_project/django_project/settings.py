@@ -10,8 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
-from pathlib import Path
+import json
+#from pathlib import Path
+from unipath import Path
 from django.contrib.messages import constants as messages
+from django.core.exceptions import ImproperlyConfigured
 
 MESSAGE_TAGS = {
     messages.DEBUG: 'alert-info',
@@ -21,20 +24,34 @@ MESSAGE_TAGS = {
     messages.ERROR: 'alert-danger',
 }
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+#BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).ancestor(3)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-@78+lsz6o8dean2ed*n=3pt(hqn8rlxd(z+qvdvy^@(-4$9zkn"
+# Se abre el archivo secret.json y se lee el contenido
+with open("secret.json") as f:
+    secret = json.loads(f.read())
+# Se crea una funcion para que nos devuelve las variables dentro del archivo
+def get_secret(secret_name, secrets=secret):
+    try:
+        return secrets[secret_name]
+    except:
+        msg = "La variable %s no existe" % secret_name
+        raise ImproperlyConfigured(msg)
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = get_secret('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ftv-viewpoint','192.168.168.19','127.0.0.1','localhost']
-
+#ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['ftv-web2','192.168.168.55','127.0.0.1','10.108.137.241']
+# VIRTUAL IP del firewall para hacer el NAT: 10.108.137.241 --->  192.168.168.55
 # Application definition
 
 INSTALLED_APPS = [
@@ -87,41 +104,17 @@ WSGI_APPLICATION = "django_project.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# Conexion con una BD Sqlite3 (Base Local en la misma carpeta) 
-""" DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-} """
 # Conexion con una BD Postgresql
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'laboratorio_db',
-        'USER': 'qptech',
-        'PASSWORD': '#Argos2017',
+        'NAME': get_secret('DB_NAME'),
+        'USER': get_secret('USER'),
+        'PASSWORD': get_secret('PASSWORD'),
         'HOST': 'localhost',
         'PORT': '5432',
-       'OPTIONS': {
-               'options': '-c search_path=django,public'
-           },
-       'TEST': {
-               'NAME': 'test', # test database name
-           },
     }
 }
-# Conexion con una BD SQLServer 
-""" DATABASES = {
-    'default': {
-        'ENGINE': 'sql_server.pyodbc',
-        'NAME': 'Laboratorio',
-        'USER': 'qptech',
-        'PASSWORD': '#Argos2017',
-        'HOST': 'FTV-VIEWPOINT\ARGOSLABSQL',
-        'PORT': '',
-    }
-} """
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
@@ -152,23 +145,23 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-#STATIC_URL = "static/"
 STATIC_URL = '/static/'
-# Puedes usar cualquiera de los 2 siguientes
-#STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
-STATIC_ROOT = os.path.join(BASE_DIR,'static')
+STATICFILES_DIRS = [BASE_DIR.child('static')] 
+STATIC_ROOT = BASE_DIR.child('static')
 
 MEDIA_URL='/media/'
-MEDIA_ROOT = BASE_DIR /'media'
+MEDIA_ROOT = BASE_DIR.child('media')
 
 # SMTP Configure
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.mail.me.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'argos.pa@icloud.com'
-EMAIL_HOST_PASSWORD = 'timv-ebmh-ddmr-ovmv'
-DEFAULT_FROM_EMAIL = 'ab.alvarado.g@gmail.com'
+
+# Email Settings
+EMAIL_HOST_USER = get_secret('EMAIL')
+EMAIL_HOST_PASSWORD = get_secret('PASS_EMAIL')
+DEFAULT_FROM_EMAIL = get_secret('FROM_EMAIL')
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'

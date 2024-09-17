@@ -1,0 +1,33 @@
+{% extends "ecommerce/ecommerce-products-layout.html" %}
+{% load static %}
+{% block body %}
+<div class="row">
+    <!--Caja de Repuesto, Fotos, titulos materiales-->
+    <div class="col-xl-4 col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="product-img position-relative">
+                    <!--Porcentaje de Descuento-->
+                    <div class="avatar-sm product-ribbon">
+                        <span class="avatar-title rounded-circle  bg-primary">
+                            {{tabla.field_stock_total}}
+                        </span>
+                    </div>
+                    <!--Imagen del Repuesto-->
+                    <img src="{% static 'images/product/'%}{{tabla.material}}.jpg" alt="" class="img-fluid mx-auto d-block">
+                </div>
+                <!--Bloque de Informacion del Repuesto-->
+                <div class="mt-4 text-center">
+                    <h5 class="my-0"><span class="text-dark">Código</span> <b>{{tabla.texto_breve_de_material}}</b></h5>
+                    <h5 class="my-0"><span class="text-muted me-2">Código</span> <b>-------------</b></h5>
+                    <h5 class="my-0"><span class="text-muted me-2">Código</span> <b>{{tabla.material}}</b></h5>
+                    <h5 class="my-0"><span class="text-muted me-2">Descripción</span> <b>{{tabla.texto_breve_de_material}}</b></h5>
+                    <h5 class="my-0"><span class="text-muted me-2">Stock</span> <b>{{tabla.field_stock_total}}</b></h5>
+                    <h5 class="my-0"><span class="text-muted me-2">Unidades</span> <b>{{tabla.umb}}</b></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

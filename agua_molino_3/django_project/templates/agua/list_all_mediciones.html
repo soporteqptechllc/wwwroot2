@@ -1,0 +1,89 @@
+{% extends "partials/baseJG.html" %}
+{% block title %}
+ARGOS | Lista General
+{% endblock title %}
+{% block content %}<!-- start block contents -->
+{% include 'partials/headerJG.html'%}
+{% load static %}
+<div class="grid-container">
+    <div class="grid-x align-center">
+        <h3 class="subheader">LISTA DE TODAS LAS MEDICIONES DE AGUA DE RIO</h3> 
+        
+        <form method="get" class="cell grid-x grid-margin-x">{% csrf_token %}
+            <div class="cell large-7">
+                <input type="text" name="kword" id="kword" placeholder=" Buscar medicion (yyyy-mm-dd)">
+            </div>
+            <div class="cell large-2">
+                <button type="submit" class="submit success button">Buscar</button>
+            </div>
+        </form>
+        <div class="cell">
+            <table>
+                <thead>
+                    <tr>
+                        <th width="100">#_ID</th>
+                        <th width="200">FECHA</th>
+                        <th width="200">FECHA_PLC</th>
+                        <th width="100">NIVEL (%)</th>
+                        <th width="100">VOLUMEN (m3)</th>
+                        <th width="100">FLUJO (G/m)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for e in object_list %}
+                    <tr>
+                        <td>{{ e.id }}</td>
+                        <td>{{ e.created_at }}</td>
+                        <td>{{ e.datatime }}</td>
+                        <td>{{ e.nivel }}</td>
+                        <td>{{ e.volumen }}</td>
+                        <td>{{ e.flujo }}</td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+        <div class="cell">
+            
+            {% if is_paginated %}
+            <nav aria-label="Pagination">
+                <ul class="pagination text-center">
+                    
+                    {% if  page_obj.has_previous %}
+                    <li class="pagination-previous">
+                        <a href="?page={{ page_obj.previous_page_number }}" aria-label="Previous page">Previous</a>
+                    </li>
+                    {% endif %}
+                    {% for pagina in paginator.page_range %}                    
+                        {% if pagina == page_obj.number  %}
+                        <li class="current"><span class="show-for-sr">You're on page</span>{{ pagina }}</li>
+                        {% else %}
+                        <li><a href="?page={{ pagina }}" aria-label="Page">{{ pagina }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                    <li class="pagination-next">
+                        <a href="?page={{ page_obj.next_page_number }}" aria-label="Next page">Next</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+            {% endif %}               
+        </div>
+    </div>
+    <!-- Inicio boton de Refresh -->
+    <div class="text-center mt-4">
+        {% csrf_token %}
+        <form action="{% url 'agua_app:mediciones_agua_lista' %}">
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary waves-effect waves-light">Refresh</button>
+            </div>
+        </form>
+    <br>
+    <br>
+    <br>
+    <br>
+    </div><!-- Fin boton de Refresh -->
+    </div><!-- end row -->
+</div>
+{% endblock content %}<!-- end block contents -->

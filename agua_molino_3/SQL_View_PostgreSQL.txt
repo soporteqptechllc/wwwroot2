@@ -1,0 +1,39 @@
+(SQL de PostgreSQL, para crear View)
+(ViewAguaLanzasM3Day)
+(Tabla View del consumo de agua de lanza Molino 3 por Dia)
+
+SELECT
+EXTRACT(YEAR FROM datatime_db:: DATE) AS year,
+EXTRACT(MONTH FROM datatime_db:: DATE) AS month,
+EXTRACT(WEEK FROM datatime_db:: DATE) AS week,
+EXTRACT(DAY FROM datatime_db:: DATE) AS day,
+MAX(datatime_db) AS fecha,
+MAX(volumen_totalizado) AS volumen
+FROM public.agua_medidoragualanzasmolino3
+GROUP BY year,month,week,day
+ORDER BY year,month,week,day ASC
+
+(ViewAguaLanzasM3Month)
+(Tabla View del consumo de agua de lanza Molino 3 por Mes)
+
+SELECT
+EXTRACT(YEAR FROM datatime_db:: DATE) AS year,
+EXTRACT(MONTH FROM datatime_db:: DATE) AS month,
+MAX(datatime_db) AS fecha,
+MAX(volumen_totalizado) AS volumen
+FROM public.agua_medidoragualanzasmolino3
+GROUP BY year,month
+ORDER BY year,month ASC
+
+SELECT fecha, volumen,TO_CHAR (fecha:: DATE, 'dd-mm-yyyy') FROM public."ViewAguaLanzasM3Day"
+WHERE year = 2023 AND month = 6 AND day = 5
+
+SELECT * FROM public."ViewAguaLanzasM3Day"
+WHERE year = 2023 AND week = 26
+
+SELECT MIN(fecha) FROM public."ViewAguaLanzasM3Day"
+WHERE year = 2023 AND week = 23
+
+SELECT MAX(fecha), MAX(volumen) FROM public."ViewAguaLanzasM3Day"
+WHERE TO_CHAR (fecha:: DATE, 'yyyy-mm-dd') <= TO_CHAR ('2023-05-30':: DATE, 'yyyy-mm-dd')
+

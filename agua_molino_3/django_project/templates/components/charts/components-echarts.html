@@ -1,0 +1,116 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block css%}
+{% include 'partials/css.html' %}
+{% endblock %}
+{% block extra_css %}
+{% endblock %}
+{% block contents %}
+                       <div class="row">
+                            <div class="col-xl-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title mb-4">Line Chart</h4>
+                                        <div id="line-chart" class="e-charts"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title mb-4">Mix Line-Bar</h4>
+                                        <div id="mix-line-bar" class="e-charts"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row -->
+        
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title mb-4">Doughnut Chart</h4>
+                                        <div id="doughnut-chart" class="e-charts"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title mb-4">Pie Chart</h4>
+                                        <div id="pie-chart" class="e-charts"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row -->
+        
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title mb-4">Scatter Chart</h4>
+                                        <div id="scatter-chart" class="e-charts"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title mb-4">Bubble Chart</h4>
+                                        <div id="bubble-chart" class="e-charts"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row -->
+        
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title mb-4">Candlestick Chart</h4>
+                                        <div id="candlestick-chart" class="e-charts"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title mb-4">Gauge Chart</h4>
+                                        <div id="gauge-chart" class="e-charts"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row -->
+                        
+                    </div> <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+
+{% endblock %}
+{% block r_sidebar %}
+{% include 'partials/rightsidebar.html' %}
+{% endblock %}
+{% block footer %}
+{% include 'partials/footer.html' %}
+{% endblock %}
+{% block javascript %}
+
+        <!-- JAVASCRIPT -->
+        <script src="{% static 'libs/jquery/jquery.min.js' %}"></script>
+        <script src="{% static 'libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'libs/metismenu/metisMenu.min.js' %}"></script>
+        <script src="{% static 'libs/simplebar/simplebar.min.js' %}"></script>
+        <script src="{% static 'libs/node-waves/waves.min.js' %}"></script>
+
+        <!-- echarts js -->
+        <script src="{% static 'libs/echarts/echarts.min.js' %}"></script>
+        <!-- echarts init -->
+        <script src="{% static 'js/pages/echarts.init.js' %}"></script>
+        
+        <script src="{% static 'js/app.js' %}"></script>
+{% endblock %}

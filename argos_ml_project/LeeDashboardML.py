@@ -200,7 +200,7 @@ boquillas.objects.bulk_create(listaBQ)
 # ****************************************************
 # ****************************************************
 # ****************************************************    
-# Lectura de dstos de PLC y escritura en base PostgreSQL
+# Lectura de datos de PLC y escritura en base PostgreSQL
 # **************************************************** 
 # Leer los datos de PLC y crear unas listas
 with LogixDriver('192.168.0.11') as CompacTLogixML:

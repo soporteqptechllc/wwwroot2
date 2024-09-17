@@ -1,0 +1,27 @@
+{% load static %}
+<div class="top-bar">
+    <div class="top-bar-left">
+        <a href="{% url 'agua_app:consumo_agua_lanzas_m3a_grafica' ano 0 %}" class="thumbnail"><img src="{% static 'images/Argos.png' %}" alt="Logo"></a>
+        <ul class="dropdown menu" data-dropdown-menu>           
+            <li class="menu-text-left"><h5 class="h6">Argos Panama, S.A.</h5></li>
+        </ul>
+    </div>
+    <div class="top-bar-left">
+        <ul class="dropdown menu" data-dropdown-menu>           
+            <li class="menu-text-left"><h5 class="h3">Sistema de agua de Molino #3</h5></li>
+        </ul>
+        <ul class="dropdown menu" data-dropdown-menu>
+            <li>
+                <a href="{% url 'agua_app:consumo_agua_lanzas_m3a_grafica' ano 0 %}"><i class="fi-list"></i><span> Gráfica - Consumo de Agua Mensual-Anual</span></a>
+            </li>
+            <li>
+                <a href="{% url 'agua_app:consumo_agua_lanzas_m3s_grafica' ano semana %}"><i class="fi-list"></i><span> Gráfica - Consumo de Agua Diaria-Semana</span></a>
+            </li>
+        </ul>       
+    </div>
+    <div class="top-bar-right">
+        <ul class="dropdown menu" data-dropdown-menu>           
+            <li class="menu-text-left"><h5 class="h6">Planta: Quebradancha</h5></li>
+        </ul>
+    </div>
+</div>

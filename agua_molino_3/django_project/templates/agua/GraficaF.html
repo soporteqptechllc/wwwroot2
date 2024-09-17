@@ -1,0 +1,197 @@
+{% extends "partials/baseJG.html" %}
+{% block title %}
+ARGOS | {{heading}}
+{% endblock title %}
+{% block content %}<!-- start block contents -->
+{% include 'partials/headerJG.html'%}
+{% load static %}
+<!-- Plugins js -->
+<!-- Plugins js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@latest/dist/Chart.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+<br>
+<div class="row">
+
+    <!--Caja de Tanque, Imagen, Datos del Tanque-->
+
+    <!--Inicio del dibujo del tanque-->
+    <div class="col-xl-4 col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="product-img position-relative">
+                    <!--Nivel del Tanque-->
+                    <div class="avatar-sm product-ribbon">
+                        <h5 align="left" class="my-0"><span class="text-muted me-2"> </span> <b></b></h5>
+                        <span class="avatar-title rounded-circle  bg-primary">
+                            {{niveltxt}}%
+                        </span>
+                    </div>                               
+                    <!--Imagen de Tanque-->
+                    <div class="tk1" id="tanq1">
+                        <div class="ring"></div>
+                        <h3 class="text1"></h3>
+                        <div class="lq1" data-amount="{{niveltxt}}">
+                            <div class="ring1"></div>
+                        </div>
+                    </div>
+                </div>
+                <!--Bloque de Informacion del Tanque-->
+                <div class="mt-4 text-center">
+                    <h5 class="mb-3 text-truncate"><a>{{titulotxt1}} </a></h5>
+                    <h5 class="mb-3 text-truncate"><a>{{titulotxt2}} </a></h5>
+                    <hr align="align-items-center" width="100%" size="5px" color="black">
+                    <h5 class="mb-3 text-truncate"><a>K93-BA1-F1</a></h5>
+                    <h5 align="left" class="my-0"><span class="text-muted me-2">Volumen: </span> <b>{{volumentxt}} (m3)</b></h5>
+                    <h5 align="left" class="my-0"><span class="text-muted me-2">Flujo: </span><b>{{flujotxt}} (G/m) </b></h5>
+                    <h5 align="left" class="my-0"><span class="text-muted me-2">Nivel: </span> <b>{{niveltxt}} (%)</b></h5>
+                    <h5 align="left" class="my-0"><span class="text-muted me-2">Fecha de Base Datos: </span> <b>{{fechabdtxt}}</b></h5>
+                    <h5 align="left" class="my-0"><span class="text-muted me-2">Fecha del PLC: </span> <b>{{fechaplctxt}}</b>
+                    </h5>
+                    <hr align="align-items-center" width="100%" size="5px" color="black">                    
+                </div>
+                <!--Bloque de Informacion del Consumo de agua-->
+                <div class="product-img position-relative">
+                    <div class="row text-center">
+                        <!--Bloque de Informacion de Consumo-->
+                        <div class="col-12 card text-dark bg-light mb-3 align-center" style="max-width: 28rem;">
+                            <div class="card-header"><b>CONSUMO DE AGUA DE RIO</b></div>
+                            <div class="card-body">
+                                <h2 align="left" class="my-0" style="color: blue;"><span class="text-muted me-2">Volumen: </span>
+                                    <b>{{volumentxt}} (m3)</b>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Bloque de Informacion de las Bombas de Rio-->
+                <div class="product-img position-relative">
+                    <div class="row text-center">
+                        <!--Bloque de Informacion de la Bomba #1-->
+                        <div class="col-6 card text-dark bg-light mb-3" style="max-width: 18rem;">
+                            {% if bomba1txt == 1 %}
+                                <div class="card-header">Bomba1 (ON)</div>
+                                <div class="card-body">
+                                    <img id="source" src="{% static 'images/BombaAguaVerde.png' %}" width="300" height="200" />
+                                </div>
+                            {% else %}
+                                <div class="card-header">Bomba1 (OFF)</div>
+                                <div class="card-body">
+                                    <img id="source" src="{% static 'images/BombaAguaGris.png' %}" width="300" height="200" />
+                                </div>
+                            {% endif %}
+                        </div>
+                        <!--Bloque de Informacion de la Bomba #2-->
+                        <div class="col-6 card text-dark bg-light mb-3" style="max-width: 18rem;">
+                            {% if bomba2txt == 1 %}
+                            <div class="card-header">Bomba2 (ON)</div>
+                            <div class="card-body">
+                                <img id="source" src="{% static 'images/BombaAguaVerde.png' %}" width="300" height="200" />
+                            </div>
+                            {% else %}
+                            <div class="card-header">Bomba2 (OFF)</div>
+                            <div class="card-body">
+                                <img id="source" src="{% static 'images/BombaAguaGris.png' %}" width="300" height="200" />
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Fin del dibujo del tanque-->
+    <!--Inicio de la grafica del tanque-->
+    <div class="col-xl-8 col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="product-img position-relative">
+                    <div class="col-12">
+                        <h5 align='CENTER'>Gráfica de tendencia del flujo de agua representada en (G/m)</h5>
+                        <canvas id="grafica" align='CENTER'></canvas>
+                        <h6 align='CENTER'>Es la fecha, hora y minutos</h6>
+                    </div>
+                    <br>
+<!--                     <div class="col-12" align='CENTER'>
+                        <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"><<</a>
+                        <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">>></a>            
+                    </div> -->
+<!--                     <br>
+                    <div class="col-12" align='CENTER'>
+                        <a href="#" class="btn btn-primary btn-lg active" role="button"
+                            aria-pressed="true"><<</a>
+                        <a href="#" class="btn btn-primary btn-lg active" role="button"
+                            aria-pressed="true">>></a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>  
+    <!-- Inicio boton de Refresh -->
+    <div class="text-center mt-4">
+        {% csrf_token %}
+        <form action="{% url 'agua_app:mediciones_agua_grafica2' %}">
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary waves-effect waves-light">Refresh</button>
+            </div>
+        </form>
+    <br>
+    </div><!-- Fin boton de Refresh -->
+</div><!-- end row -->
+{% block messages %}<!-- start block messages -->
+{% include 'partials/messages.html' %}
+{% endblock %}<!-- end block messages -->
+<br>
+<br>
+{% endblock %}<!-- end block contents -->
+
+{% block javascript %}
+<SCRIPT LANGUAGE="JavaScript">
+    // Obtener una referencia al elemento canvas del DOM
+    const $grafica = document.querySelector("#grafica");
+    // Los datos se guardan en una lista con diccionarios internos
+    // Se declara unas listas vacias
+    var labels = []
+    var datas = []
+    // Se declara unas listas en X y otra en Y
+    var listay = "{{listaY}}"; // String desde Django, datos del eje y
+    var listax = "{{listaX}}"; // String desde Django, datos del eje x
+    var titulox = "{{tituloX}}"; // string desde Djando, dato titulo de x
+    var arrayY = listay.split(",").map(Number); // conversion de los datos a un tipo array
+    var arrayX = listax.split(",").map(String); // conversion de los datos a un tipo array
+    // Se crean estas listas con la informacion, separando en dos los datos
+    for (var i in arrayX, arrayY) {
+        labels[i] = arrayX[i];
+        datas[i] = Number(arrayY[i]);
+    }
+    // Podemos tener varios conjuntos de datos
+    const datosLinea01 = {
+        label: titulox,
+        //data: datos, // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
+        data: datas,
+        backgroundColor: 'rgba(54, 162, 235, 0.2)', // Color de fondo
+        borderColor: 'rgba(54, 162, 235, 1)', // Color del borde
+        borderWidth: 1, // Ancho del borde
+    };
+    new Chart($grafica, {
+        type: 'line',// Tipo de gráfica o 'bar'
+        data: {
+            //labels: etiquetas,
+            labels: labels,
+            datasets: [
+                datosLinea01,
+                // Aquí más datos...
+            ]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }],
+            },
+        }
+    });  
+</SCRIPT>
+{% endblock %}

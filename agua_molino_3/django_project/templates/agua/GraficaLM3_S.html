@@ -1,0 +1,132 @@
+{% extends "partials/baseJG.html" %}
+{% block title %}
+ARGOS | {{heading}}
+{% endblock title %}
+{% block content %}<!-- start block contents -->
+{% include 'partials/headerLM3.html'%}
+{% load static %}
+<!-- Plugins js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@latest/dist/Chart.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+<!-- Compressed CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/css/foundation.min.css" crossorigin="anonymous">
+<!-- Compressed JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/js/foundation.min.js" crossorigin="anonymous"></script>
+<br>
+<div class="container">
+    <div class="row justify-content-md-center">
+        <!--Inicio de la grafica del consumo de agua-->
+        <div class="col-xl-10 col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="product-img position-relative">
+                        <div class="col-12">
+                            <h5 align='CENTER'>Gráfica de barras del consumo de agua de las lanzas del Molino3 (lts) - Año: {{ano}}</h5>
+                            <canvas id="grafica" align='CENTER'></canvas>
+                            <h6 align='CENTER'>día de la semana</h6>
+                            <h7 align='CENTER'>Unidad: Litros por día</h7>
+                            <br>
+                            <h5 class="text-right"># de la Semana: {{semana}}</h5>
+                        </div>
+                        <br>
+                        <div class="col-12" align='CENTER'>
+                            <a href="{% url 'agua_app:consumo_agua_lanzas_m3s_grafica' ano semanaD %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"><<</a>
+                            <a href="{% url 'agua_app:consumo_agua_lanzas_m3s_grafica' ano semanaI %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">>></a>            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Fin de la grafica del consumo de agua-->
+        <br>
+        <!-- Inicio boton de Refresh -->
+        <div class="text-center mt-4">
+            {% csrf_token %}
+            <form action="{% url 'agua_app:consumo_agua_lanzas_m3s_grafica' ano semana %}">
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary waves-effect waves-light">Refresh</button>
+                </div>
+            </form>
+        <br>
+        </div><!-- Fin boton de Refresh -->
+    </div><!-- end row -->
+</div><!-- end container -->
+{% block messages %}<!-- start block messages -->
+{% include 'partials/messages.html' %}
+{% endblock messages %}<!-- end block messages -->
+<br>
+<br>
+{% endblock content %}<!-- end block contents -->
+{% block javascript %}
+<SCRIPT LANGUAGE="JavaScript">
+    const ctx = document.getElementById('grafica');
+    // Se declara unas listas vacias
+    var labels = []
+    var datas = []
+    // Se declara unas listas en X y otra en Y
+    var listay = "{{listaY}}"; // String desde Django, datos del eje y
+    var listax = "{{listaX}}"; // String desde Django, datos del eje x
+    var titulox = "{{tituloX}}"; // string desde Djando, dato titulo de x
+    var arrayY = listay.split(",").map(Number); // conversion de los datos a un tipo array
+    var arrayX = listax.split(",").map(String); // conversion de los datos a un tipo array
+    // Se crean estas listas con la informacion, separando en dos los datos
+    for (var i in arrayX, arrayY) {
+        labels[i] = arrayX[i];
+        datas[i] = Number(arrayY[i]);
+    }
+    //alert("listaY : "+ listay);
+    //alert("listaX : "+ listax);
+    //alert("labels : "+ labels);
+    //alert("datas : "+ datas);
+    const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels : labels,           
+            datasets: [{
+                label: titulox,
+                data: datas,
+                // Color de fondo
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(54, 162, 235, 0.5)'
+                ],
+                 // Color del borde
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)'
+                ],
+                borderWidth: 1 // Ancho del borde
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+{% endblock javascript %}
+
